@@ -11,7 +11,6 @@
       --surface: #1a1a1a;
       --border: #2a2a2a;
       --red: #e50914;
-      --red-dim: #9b0000;
       --white: #ffffff;
       --muted: #999;
       --card-w: 200px;
@@ -26,284 +25,132 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 1rem 3rem;
       background: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent);
     }
-    .logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 0.1em;
-      color: var(--red);
-      cursor: pointer;
-    }
+    .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.1em; color: var(--red); cursor: pointer; }
     .logo span { color: var(--white); }
-    .nav-home {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      cursor: pointer;
-      border: 1px solid var(--border);
-      padding: 0.4rem 1rem;
-      transition: all 0.2s;
-    }
+    .nav-home { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); cursor: pointer; border: 1px solid var(--border); padding: 0.4rem 1rem; transition: all 0.2s; }
     .nav-home:hover { color: var(--white); border-color: var(--white); }
 
-    /* ── HERO ── */
-    #home {
-      min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 3rem 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse at 70% 40%, rgba(229,9,20,0.12) 0%, transparent 60%),
-        repeating-linear-gradient(
-          45deg,
-          transparent,
-          transparent 40px,
-          rgba(255,255,255,0.012) 40px,
-          rgba(255,255,255,0.012) 41px
-        ),
-        var(--bg);
-    }
-    .hero-bg::after {
-      content: '☠';
-      position: absolute; right: 5%; top: 15%;
-      font-size: 32vw; opacity: 0.03;
-      line-height: 1; user-select: none;
-      animation: sway 10s ease-in-out infinite;
-    }
-    @keyframes sway {
-      0%,100% { transform: rotate(-4deg); }
-      50%      { transform: rotate(4deg); }
-    }
+    #home { min-height: 70vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 3rem 3rem; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 40%, rgba(229,9,20,0.12) 0%, transparent 60%), repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 41px), var(--bg); }
+    .hero-bg::after { content: '☠'; position: absolute; right: 5%; top: 15%; font-size: 32vw; opacity: 0.03; line-height: 1; user-select: none; animation: sway 10s ease-in-out infinite; }
+    @keyframes sway { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
     .hero-content { position: relative; max-width: 700px; }
-    .hero-tag {
-      display: inline-block;
-      background: var(--red);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.8rem;
-      margin-bottom: 1rem;
-    }
-    .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4rem, 12vw, 9rem);
-      line-height: 0.9;
-      letter-spacing: 0.02em;
-      animation: fadeUp 0.8s 0.2s both;
-    }
+    .hero-tag { display: inline-block; background: var(--red); font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.3rem 0.8rem; margin-bottom: 1rem; }
+    .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 12vw, 9rem); line-height: 0.9; letter-spacing: 0.02em; animation: fadeUp 0.8s 0.2s both; }
     .hero-title em { color: var(--red); font-style: normal; }
-    .hero-desc {
-      margin-top: 1.2rem;
-      font-size: 1rem;
-      font-weight: 300;
-      color: #bbb;
-      max-width: 480px;
-      line-height: 1.6;
-      animation: fadeUp 0.8s 0.45s both;
-    }
-    .hero-btn {
-      margin-top: 1.8rem;
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      background: var(--white); color: var(--bg);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem; font-weight: 600;
-      padding: 0.75rem 2rem;
-      cursor: pointer; border: none;
-      transition: background 0.2s, transform 0.15s;
-      animation: fadeUp 0.8s 0.65s both;
-    }
+    .hero-desc { margin-top: 1.2rem; font-size: 1rem; font-weight: 300; color: #bbb; max-width: 480px; line-height: 1.6; animation: fadeUp 0.8s 0.45s both; }
+    .hero-btn { margin-top: 1.8rem; display: inline-flex; align-items: center; gap: 0.6rem; background: var(--white); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.75rem 2rem; cursor: pointer; border: none; transition: background 0.2s, transform 0.15s; animation: fadeUp 0.8s 0.65s both; }
     .hero-btn:hover { background: #ddd; transform: scale(1.03); }
-    @keyframes fadeUp {
-      from { opacity:0; transform: translateY(20px); }
-      to   { opacity:1; transform: none; }
-    }
+    @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: none; } }
 
-    /* ── SECTIONS ROW ── */
     .row { padding: 2.5rem 3rem; }
-    .row-label {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 0.06em;
-      margin-bottom: 1.2rem;
-      color: var(--white);
-    }
-    .cards {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    .row-label { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.06em; margin-bottom: 1.2rem; }
+    .cards { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-    /* ── CARD ── */
-    .card {
-      width: var(--card-w);
-      flex-shrink: 0;
-      cursor: pointer;
-      position: relative;
-      transition: transform 0.25s, z-index 0s;
-      border-radius: 3px;
-      overflow: visible;
-    }
+    .card { width: var(--card-w); flex-shrink: 0; cursor: pointer; position: relative; transition: transform 0.25s; border-radius: 3px; }
     .card:hover { transform: scale(1.08); z-index: 10; }
-    .card-thumb {
-      width: 100%;
-      aspect-ratio: 2/3;
-      border-radius: 3px;
-      overflow: hidden;
-      position: relative;
-    }
-    .card-thumb-inner {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column;
-      gap: 0.5rem;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.06em;
-      text-align: center;
-      padding: 1rem;
-      position: relative;
-      z-index: 1;
-    }
-    .card-thumb-inner .num {
-      font-size: 3.5rem;
-      line-height: 1;
-      opacity: 0.25;
-      position: absolute;
-      bottom: 0.3rem; right: 0.5rem;
-    }
-    .card-overlay {
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0);
-      transition: background 0.25s;
-      border-radius: 3px;
-      display: flex; align-items: center; justify-content: center;
-    }
+    .card-thumb { width: 100%; aspect-ratio: 2/3; border-radius: 3px; overflow: hidden; position: relative; }
+    .card-thumb-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.06em; text-align: center; padding: 1rem; position: relative; z-index: 1; }
+    .card-thumb-inner .num { font-size: 3.5rem; line-height: 1; opacity: 0.25; position: absolute; bottom: 0.3rem; right: 0.5rem; }
+    .card-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); transition: background 0.25s; border-radius: 3px; display: flex; align-items: center; justify-content: center; }
     .card:hover .card-overlay { background: rgba(0,0,0,0.55); }
-    .play-btn {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.9);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; transform: scale(0.6);
-      transition: opacity 0.2s, transform 0.2s;
-    }
+    .play-btn { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.9); display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(0.6); transition: opacity 0.2s, transform 0.2s; }
     .play-btn svg { margin-left: 3px; }
     .card:hover .play-btn { opacity: 1; transform: scale(1); }
-    .card-info {
-      margin-top: 0.5rem;
-      padding: 0 0.1rem;
-    }
-    .card-title {
-      font-size: 0.82rem;
-      font-weight: 600;
-      line-height: 1.3;
-      color: var(--white);
-    }
-    .card-meta {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      color: var(--muted);
-      margin-top: 0.2rem;
-      letter-spacing: 0.05em;
-    }
+    .card-info { margin-top: 0.5rem; padding: 0 0.1rem; }
+    .card-title { font-size: 0.82rem; font-weight: 600; line-height: 1.3; }
+    .card-meta { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--muted); margin-top: 0.2rem; letter-spacing: 0.05em; }
 
-    /* ── DETAIL PAGE ── */
-    #detail-page {
-      display: none;
-      min-height: 100vh;
-      padding-top: 5rem;
-    }
+    /* ── DETAIL ── */
+    #detail-page { display: none; min-height: 100vh; padding-top: 5rem; }
     #detail-page.active { display: block; }
-    #home-page { display: block; }
     #home-page.hidden { display: none; }
-
-    .detail-hero {
-      padding: 3rem 3rem 2rem;
-      position: relative;
-      border-bottom: 1px solid var(--border);
-    }
-    .detail-hero-bg {
-      position: absolute; inset: 0;
-      opacity: 0.08;
-      background: radial-gradient(ellipse at 50% 0%, var(--accent, #e50914), transparent 70%);
-    }
-    .detail-back {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      cursor: pointer;
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-    }
+    .detail-hero { padding: 3rem 3rem 2rem; position: relative; border-bottom: 1px solid var(--border); }
+    .detail-back { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; position: relative; }
     .detail-back:hover { color: var(--white); }
-    .detail-tag {
-      display: inline-block;
-      background: var(--accent, var(--red));
+    .detail-tag { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.25rem 0.7rem; margin-bottom: 0.8rem; position: relative; }
+    .detail-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 8vw, 6rem); letter-spacing: 0.04em; line-height: 0.95; position: relative; }
+    .detail-body { max-width: 760px; margin: 0 auto; padding: 3rem; }
+    .detail-body p { color: #ccc; font-size: 1.1rem; font-weight: 300; line-height: 1.8; margin-bottom: 1.4rem; }
+    .detail-body blockquote { border-left: 3px solid var(--red); padding: 0.4rem 0 0.4rem 1.8rem; margin: 2rem 0; font-size: 1.35rem; font-style: italic; font-weight: 300; color: var(--white); line-height: 1.45; }
+
+    footer { border-top: 1px solid var(--border); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    footer .logo-sm { color: var(--red); font-family: 'Bebas Neue', sans-serif; font-size: 1rem; }
+
+    /* ════════════════════════════
+       AD POPUP SYSTEM
+    ════════════════════════════ */
+    #ad-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(2px);
+      animation: overlayIn 0.15s ease;
+    }
+    #ad-overlay.show { display: flex; align-items: center; justify-content: center; }
+    @keyframes overlayIn { from { opacity:0; } to { opacity:1; } }
+
+    .ad-popup {
+      position: relative;
+      max-width: 480px;
+      width: 90%;
+      border: 2px solid;
+      animation: popIn 0.2s cubic-bezier(0.34,1.56,0.64,1);
+      font-family: 'DM Sans', sans-serif;
+      overflow: hidden;
+    }
+    @keyframes popIn { from { opacity:0; transform: scale(0.85) translateY(20px); } to { opacity:1; transform: none; } }
+
+    .ad-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.4rem 0.8rem;
       font-family: 'Space Mono', monospace;
-      font-size: 0.6rem; letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.7rem;
-      margin-bottom: 0.8rem;
-      position: relative;
+      font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
     }
-    .detail-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 8vw, 6rem);
-      letter-spacing: 0.04em;
-      line-height: 0.95;
-      position: relative;
-    }
-    .detail-body {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 3rem;
-    }
-    .detail-body p {
-      color: #ccc;
+    .ad-close-btn {
+      cursor: pointer;
       font-size: 1.1rem;
-      font-weight: 300;
-      line-height: 1.8;
-      margin-bottom: 1.4rem;
+      line-height: 1;
+      padding: 0.1rem 0.4rem;
+      border: 1px solid currentColor;
+      transition: opacity 0.15s;
+      user-select: none;
     }
-    .detail-body blockquote {
-      border-left: 3px solid var(--accent, var(--red));
-      padding: 0.4rem 0 0.4rem 1.8rem;
-      margin: 2rem 0;
-      font-size: 1.35rem;
-      font-style: italic;
-      font-weight: 300;
-      color: var(--white);
-      line-height: 1.45;
+    .ad-close-btn:hover { opacity: 0.6; }
+
+    /* fake countdown */
+    .ad-countdown {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      opacity: 0.7;
     }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 3rem;
-      display: flex; align-items: center; justify-content: space-between;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.62rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--muted);
+    .ad-body { padding: 1.5rem 1.5rem 1.2rem; }
+    .ad-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; opacity: 0.7; }
+    .ad-headline { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; line-height: 1; margin-bottom: 0.8rem; letter-spacing: 0.04em; }
+    .ad-text { font-size: 0.9rem; font-weight: 300; line-height: 1.6; opacity: 0.85; margin-bottom: 1.2rem; }
+    .ad-stat-row { display: flex; gap: 1.5rem; margin-bottom: 1.2rem; }
+    .ad-stat { text-align: center; }
+    .ad-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; line-height: 1; }
+    .ad-stat-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.12em; opacity: 0.6; text-transform: uppercase; }
+    .ad-cta {
+      display: inline-block; padding: 0.6rem 1.4rem;
+      font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; border: none;
+      transition: opacity 0.15s;
     }
-    footer .logo-sm { color: var(--red); font-family: 'Bebas Neue', sans-serif; font-size: 1rem; }
+    .ad-cta:hover { opacity: 0.8; }
+    .ad-footer { padding: 0.5rem 1.5rem 0.8rem; font-family: 'Space Mono', monospace; font-size: 0.52rem; opacity: 0.4; letter-spacing: 0.08em; border-top: 1px solid rgba(255,255,255,0.08); }
+
+    /* wiggling "X" that moves away from cursor on hover — easter egg */
+    .ad-close-btn.sneaky { transition: transform 0.15s; }
+    .ad-close-btn.sneaky:hover { transform: translate(6px, -4px); }
 
     @media (max-width: 600px) {
       nav, .row, .detail-hero, .detail-body, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
@@ -326,17 +173,13 @@
       <div class="hero-tag">Essay · Media Studies · 2026</div>
       <h1 class="hero-title">PIRACY<br/><em>&amp; The Media</em><br/>Industry</h1>
       <p class="hero-desc">An investigation into how digital piracy has disrupted revenue, reshaped distribution, and forced an entire industry to reinvent itself.</p>
-      <button class="hero-btn" onclick="openCard(0)">
-        ▶ &nbsp;Start Reading
-      </button>
+      <button class="hero-btn" onclick="tryOpenCard(0)">▶ &nbsp;Start Reading</button>
     </div>
   </section>
-
   <div class="row">
     <div class="row-label">Essay Chapters</div>
     <div class="cards" id="card-grid"></div>
   </div>
-
   <footer>
     <span class="logo-sm">PIRACYTV</span>
     <span>An Essay on Digital Piracy &amp; The Media Industry</span>
@@ -346,7 +189,6 @@
 <!-- DETAIL PAGE -->
 <div id="detail-page">
   <div class="detail-hero" id="detail-hero">
-    <div class="detail-hero-bg" id="detail-hero-bg"></div>
     <div class="detail-back" onclick="goHome()">← Back to all chapters</div>
     <div class="detail-tag" id="detail-tag"></div>
     <h2 class="detail-title" id="detail-title"></h2>
@@ -354,103 +196,117 @@
   <div class="detail-body" id="detail-body"></div>
 </div>
 
+<!-- AD OVERLAY -->
+<div id="ad-overlay">
+  <div class="ad-popup" id="ad-popup">
+    <div class="ad-topbar" id="ad-topbar">
+      <span>ADVERTISEMENT</span>
+      <span class="ad-countdown" id="ad-countdown"></span>
+      <span class="ad-close-btn" id="ad-close-btn" onclick="closeAd()">✕</span>
+    </div>
+    <div class="ad-body" id="ad-body"></div>
+    <div class="ad-footer" id="ad-footer"></div>
+  </div>
+</div>
+
 <script>
   const chapters = [
-    {
-      num: "01",
-      title: "What Is Piracy?",
-      tag: "Introduction",
-      color: "#e50914",
-      bg: "#1a0000",
-      content: `
-        <p>Digital piracy refers to the unauthorized reproduction, distribution, or consumption of copyrighted media — including music, film, television, software, and literature. Since the rise of the internet in the late 1990s, piracy has grown from a niche activity into a global phenomenon that challenges the foundations of the media industry.</p>
-        <p>From Napster's file-sharing revolution in 1999 to today's sophisticated torrent ecosystems and illegal streaming sites, piracy has continuously evolved alongside the technology meant to stop it. Every new digital format — MP3s, DVDs, Blu-rays, streaming — has spawned a parallel underground distribution network within months of its release.</p>
-        <blockquote>"The internet treats censorship as damage and routes around it." — John Gilmore</blockquote>
-        <p>This essay explores the wide-ranging effects of piracy: from lost revenue and legal battles, to its unintended role in democratizing access to culture and pushing the industry toward innovation.</p>
-      `
+    { num:"01", title:"What Is Piracy?", tag:"Introduction", color:"#e50914", bg:"#1a0000",
+      content:`<p>Digital piracy refers to the unauthorized reproduction, distribution, or consumption of copyrighted media — including music, film, television, software, and literature. Since the rise of the internet in the late 1990s, piracy has grown from a niche activity into a global phenomenon that challenges the foundations of the media industry.</p><p>From Napster's file-sharing revolution in 1999 to today's sophisticated torrent ecosystems and illegal streaming sites, piracy has continuously evolved alongside the technology meant to stop it.</p><blockquote>"The internet treats censorship as damage and routes around it." — John Gilmore</blockquote><p>This essay explores the wide-ranging effects of piracy: from lost revenue and legal battles, to its unintended role in democratizing access to culture and pushing the industry toward innovation.</p>`
     },
-    {
-      num: "02",
-      title: "The Cost to Industry",
-      tag: "Economic Impact",
-      color: "#e87c16",
-      bg: "#1a0d00",
-      content: `
-        <p>The financial toll of piracy on the media industry is staggering. The music industry saw global revenues collapse from over $28 billion in 1999 to under $15 billion by 2014 — a period that directly overlapped with the explosion of file-sharing platforms. Film studios and software developers report similar losses, with the MPAA estimating tens of billions in annual losses to piracy worldwide.</p>
-        <p>Beyond direct revenue losses, piracy creates a ripple effect across the entire creative ecosystem. Reduced profits mean fewer resources for new projects, smaller budgets for emerging artists, and widespread layoffs across production companies, distributors, and retail chains.</p>
-        <blockquote>"Piracy is not just theft — it's a structural challenge to how creative industries fund themselves."</blockquote>
-        <p>Independent creators are hit hardest. While major studios can absorb losses, a filmmaker or musician whose work is pirated before it recoups production costs may never be able to make another project. The long tail of economic harm extends far beyond the headlines.</p>
-      `
+    { num:"02", title:"The Cost to Industry", tag:"Economic Impact", color:"#e87c16", bg:"#1a0d00",
+      content:`<p>The financial toll of piracy on the media industry is staggering. The music industry saw global revenues collapse from over $28 billion in 1999 to under $15 billion by 2014 — a period that directly overlapped with the explosion of file-sharing platforms.</p><p>Beyond direct revenue losses, piracy creates a ripple effect across the entire creative ecosystem. Reduced profits mean fewer resources for new projects, smaller budgets for emerging artists, and widespread layoffs.</p><blockquote>"Piracy is not just theft — it's a structural challenge to how creative industries fund themselves."</blockquote><p>Independent creators are hit hardest. While major studios can absorb losses, a filmmaker whose work is pirated before it recoups production costs may never be able to make another project.</p>`
     },
-    {
-      num: "03",
-      title: "Legal Battles",
-      tag: "Law & Enforcement",
-      color: "#1a73e8",
-      bg: "#00081a",
-      content: `
-        <p>The media industry's legal response to piracy has been aggressive and, at times, controversial. Landmark cases against Napster (2001), Grokster (2005), and The Pirate Bay (2009) established key precedents for how copyright law applies in the digital age. In the US, the DMCA (Digital Millennium Copyright Act) became the primary legal weapon against infringing platforms and users.</p>
-        <p>Mass litigation against individual users — including thousands of ordinary people sued by the RIAA in the mid-2000s — generated enormous public backlash. Critics argued the strategy was disproportionate, targeting college students and grandmothers for damages far exceeding any actual harm caused.</p>
-        <blockquote>"You can't sue your way out of a business model problem."</blockquote>
-        <p>International enforcement remains a persistent challenge. Sites like The Pirate Bay have survived domain seizures, server raids, and criminal convictions of their founders by simply migrating across jurisdictions. For every site shut down, several mirror sites appear within days.</p>
-      `
+    { num:"03", title:"Legal Battles", tag:"Law & Enforcement", color:"#1a73e8", bg:"#00081a",
+      content:`<p>The media industry's legal response to piracy has been aggressive and, at times, controversial. Landmark cases against Napster (2001), Grokster (2005), and The Pirate Bay (2009) established key precedents for how copyright law applies in the digital age.</p><p>Mass litigation against individual users generated enormous public backlash. Critics argued the strategy was disproportionate, targeting ordinary people for damages far exceeding any actual harm caused.</p><blockquote>"You can't sue your way out of a business model problem."</blockquote><p>International enforcement remains a persistent challenge. Sites like The Pirate Bay have survived domain seizures and server raids by simply migrating across jurisdictions.</p>`
     },
-    {
-      num: "04",
-      title: "The Streaming Revolution",
-      tag: "Industry Response",
-      color: "#1db954",
-      bg: "#001a08",
-      content: `
-        <p>The most effective response to piracy has not been legal action, but business model innovation. Netflix, Spotify, and their successors proved that consumers will pay for legal access — if the price is right and the experience is frictionless. Spotify launched in 2008 with the explicit goal of making legal music access more convenient than piracy.</p>
-        <p>The results have been remarkable. Global music streaming revenues grew from near zero in 2010 to over $17 billion by 2023. Netflix grew from a DVD-by-mail service to the world's largest entertainment company. The convenience gap between legal and illegal sources narrowed dramatically.</p>
-        <blockquote>"The best anti-piracy tool ever created is a product people actually want to pay for."</blockquote>
-        <p>Yet the streaming era has created new tensions. The proliferation of competing services — each with exclusive content locked behind separate paywalls — has fragmented the market in ways that some argue are pushing consumers back toward piracy out of frustration.</p>
-      `
+    { num:"04", title:"The Streaming Revolution", tag:"Industry Response", color:"#1db954", bg:"#001a08",
+      content:`<p>The most effective response to piracy has not been legal action, but business model innovation. Netflix, Spotify, and their successors proved that consumers will pay for legal access — if the price is right and the experience is frictionless.</p><p>Global music streaming revenues grew from near zero in 2010 to over $17 billion by 2023. The convenience gap between legal and illegal sources narrowed dramatically.</p><blockquote>"The best anti-piracy tool ever created is a product people actually want to pay for."</blockquote><p>Yet the streaming era has created new tensions. The proliferation of competing services has fragmented the market in ways that some argue are pushing consumers back toward piracy out of frustration.</p>`
     },
-    {
-      num: "05",
-      title: "Access & Equity",
-      tag: "The Other Side",
-      color: "#9b59b6",
-      bg: "#0d001a",
-      content: `
-        <p>Not all perspectives on piracy are purely negative. In regions with limited access to legal platforms, prohibitive pricing, or restrictive government censorship, piracy may represent the only practical means of accessing global culture and information. A student in a developing nation paying $15/month for Netflix may be spending a significant fraction of their daily income.</p>
-        <p>Some researchers argue that piracy functions as a form of free advertising — exposing audiences to content they would never otherwise discover, and sometimes converting casual pirates into paying fans. Studies of music piracy in particular have found mixed or even positive correlations with concert ticket sales and merchandise revenue.</p>
-        <blockquote>"Geography should not determine who gets access to human creativity."</blockquote>
-        <p>This raises deeper questions about whether our current intellectual property frameworks, built for a physical-media world, are adequate for a global digital one. The ethics of piracy are rarely as simple as the industry's framing suggests.</p>
-      `
+    { num:"05", title:"Access & Equity", tag:"The Other Side", color:"#9b59b6", bg:"#0d001a",
+      content:`<p>In regions with limited access to legal platforms or prohibitive pricing, piracy may represent the only practical means of accessing global culture. A student in a developing nation paying $15/month for Netflix may be spending a significant fraction of their daily income.</p><p>Some researchers argue that piracy functions as a form of free advertising — exposing audiences to content they would never otherwise discover, and sometimes converting casual pirates into paying fans.</p><blockquote>"Geography should not determine who gets access to human creativity."</blockquote><p>This raises deeper questions about whether our current intellectual property frameworks, built for a physical-media world, are adequate for a global digital one.</p>`
     },
-    {
-      num: "06",
-      title: "Looking Forward",
-      tag: "Conclusion",
-      color: "#e50914",
-      bg: "#1a0000",
-      content: `
-        <p>Piracy remains a defining challenge for the media industry in the digital age. Despite advances in streaming, DRM technology, and international legal cooperation, piracy has never been eradicated — and likely never will be. It is a permanently available alternative, always one Google search away.</p>
-        <p>The most promising path forward lies not in stricter enforcement, but in continued innovation toward access, affordability, and user experience. When legitimate services are more convenient than piracy, more affordable than the cost of a skipped meal, and available without geographic restriction — piracy loses its appeal.</p>
-        <blockquote>"The battle against piracy is, ultimately, a battle for the future of how we value and distribute creative work."</blockquote>
-        <p>The media industry that emerges from this era will look very different from the one that entered it. Whether that transformation ultimately benefits creators, consumers, and culture — or primarily consolidates power among a handful of platform giants — remains the defining question of our digital moment.</p>
-      `
+    { num:"06", title:"Looking Forward", tag:"Conclusion", color:"#e50914", bg:"#1a0000",
+      content:`<p>Piracy remains a defining challenge for the media industry in the digital age. Despite advances in streaming, DRM technology, and international legal cooperation, piracy has never been eradicated — and likely never will be.</p><p>The most promising path forward lies not in stricter enforcement, but in continued innovation toward access, affordability, and user experience.</p><blockquote>"The battle against piracy is, ultimately, a battle for the future of how we value and distribute creative work."</blockquote><p>Whether that transformation ultimately benefits creators, consumers, and culture — or primarily consolidates power among a handful of platform giants — remains the defining question of our digital moment.</p>`
     }
   ];
+
+  // ── FAKE ADS ──
+  const ads = [
+    {
+      topbarColor: "#ff6600", topbarText: "#000",
+      bodyBg: "#1a0f00", bodyColor: "#fff", borderColor: "#ff6600",
+      eyebrow: "🔥 LIMITED TIME OFFER",
+      headline: "YOUR PC MAY BE AT RISK",
+      text: "Illegal streaming sites expose users to malware 3x more than legal platforms. Studies show 1 in 4 piracy site visits results in an unwanted software download.",
+      stats: [{num:"73%", label:"of piracy sites contain malware"}, {num:"3×", label:"more risky than legal sites"}],
+      cta: "Learn More", ctaBg: "#ff6600", ctaColor: "#000",
+      footer: "Sponsored · PiracyAwareness.org · Not actual malware. Probably.",
+      sneaky: false
+    },
+    {
+      topbarColor: "#00ccff", topbarText: "#000",
+      bodyBg: "#00101a", bodyColor: "#fff", borderColor: "#00ccff",
+      eyebrow: "📺 DID YOU KNOW?",
+      headline: "STREAMING KILLED THE PIRATE",
+      text: "After Spotify launched, music piracy in Sweden dropped by 25% within two years. When legal options are easy and affordable, people choose them.",
+      stats: [{num:"−25%", label:"piracy drop after Spotify"}, {num:"2 yrs", label:"for the shift to happen"}],
+      cta: "Close Ad", ctaBg: "#00ccff", ctaColor: "#000",
+      footer: "Advertisement · This is part of the essay experience · Yes, this is intentional.",
+      sneaky: false
+    },
+    {
+      topbarColor: "#ffcc00", topbarText: "#000",
+      bodyBg: "#1a1500", bodyColor: "#fff", borderColor: "#ffcc00",
+      eyebrow: "⚖️ FUN LEGAL FACT",
+      headline: "THE MOST EXPENSIVE SONG DOWNLOAD IN HISTORY",
+      text: "In 2009, Jammie Thomas-Rasset was fined $1.92 million for downloading 24 songs — that's $80,000 per song. The case was later reduced but remains a landmark in copyright law.",
+      stats: [{num:"$80K", label:"per song downloaded"}, {num:"24", label:"songs total"}],
+      cta: "Wow, OK", ctaBg: "#ffcc00", ctaColor: "#000",
+      footer: "Sponsored by: The RIAA (just kidding) · For educational purposes only.",
+      sneaky: true  // close button tries to dodge
+    },
+    {
+      topbarColor: "#cc00ff", topbarText: "#fff",
+      bodyBg: "#100018", bodyColor: "#fff", borderColor: "#cc00ff",
+      eyebrow: "🏴‍☠️ PIRACY TRIVIA",
+      headline: "THE PIRATE BAY IS OLDER THAN YOUTUBE",
+      text: "The Pirate Bay launched in 2003. YouTube launched in 2005. The world's most notorious piracy site predates the world's largest legal video platform by two years.",
+      stats: [{num:"2003", label:"Pirate Bay founded"}, {num:"2005", label:"YouTube launched"}],
+      cta: "Mind = Blown", ctaBg: "#cc00ff", ctaColor: "#fff",
+      footer: "This ad brought to you by: irony · Close to continue reading.",
+      sneaky: false
+    },
+    {
+      topbarColor: "#ff3366", topbarText: "#fff",
+      bodyBg: "#1a0010", bodyColor: "#fff", borderColor: "#ff3366",
+      eyebrow: "💸 INDUSTRY STAT",
+      headline: "NAPSTER HAD 80 MILLION USERS",
+      text: "At its peak in 2001, Napster had 80 million registered users sharing music for free. The entire US population at the time was 285 million. That's roughly 1 in 4 Americans.",
+      stats: [{num:"80M", label:"Napster users at peak"}, {num:"1 in 4", label:"Americans used it"}],
+      cta: "Got it", ctaBg: "#ff3366", ctaColor: "#fff",
+      footer: "Advertisement · Napster no longer exists in its original form · RIP.",
+      sneaky: false
+    }
+  ];
+
+  let pendingCardIndex = null;
+  let countdownInterval = null;
 
   // Build cards
   const grid = document.getElementById('card-grid');
   const palette = [
-    'linear-gradient(135deg,#1a0000 0%,#3d0000 100%)',
-    'linear-gradient(135deg,#1a0d00 0%,#3d2000 100%)',
-    'linear-gradient(135deg,#00081a 0%,#001040 100%)',
-    'linear-gradient(135deg,#001a08 0%,#003318 100%)',
-    'linear-gradient(135deg,#0d001a 0%,#220038 100%)',
-    'linear-gradient(135deg,#1a0000 0%,#2a0010 100%)',
+    'linear-gradient(135deg,#1a0000,#3d0000)',
+    'linear-gradient(135deg,#1a0d00,#3d2000)',
+    'linear-gradient(135deg,#00081a,#001040)',
+    'linear-gradient(135deg,#001a08,#003318)',
+    'linear-gradient(135deg,#0d001a,#220038)',
+    'linear-gradient(135deg,#1a0000,#2a0010)',
   ];
-
   chapters.forEach((ch, i) => {
     const card = document.createElement('div');
     card.className = 'card';
-    card.onclick = () => openCard(i);
+    card.onclick = () => tryOpenCard(i);
     card.innerHTML = `
       <div class="card-thumb">
         <div class="card-thumb-inner" style="background:${palette[i]}">
@@ -460,19 +316,93 @@
         </div>
         <div class="card-overlay">
           <div class="play-btn">
-            <svg width="14" height="16" viewBox="0 0 14 16" fill="#111">
-              <polygon points="0,0 14,8 0,16"/>
-            </svg>
+            <svg width="14" height="16" viewBox="0 0 14 16" fill="#111"><polygon points="0,0 14,8 0,16"/></svg>
           </div>
         </div>
       </div>
       <div class="card-info">
         <div class="card-title">${ch.title}</div>
         <div class="card-meta">${ch.tag} · Chapter ${ch.num}</div>
-      </div>
-    `;
+      </div>`;
     grid.appendChild(card);
   });
+
+  // 40% chance of ad
+  function tryOpenCard(i) {
+    if (Math.random() < 0.40) {
+      pendingCardIndex = i;
+      showAd();
+    } else {
+      openCard(i);
+    }
+  }
+
+  function showAd() {
+    const ad = ads[Math.floor(Math.random() * ads.length)];
+    const overlay = document.getElementById('ad-overlay');
+    const popup   = document.getElementById('ad-popup');
+    const topbar  = document.getElementById('ad-topbar');
+    const closeBtn = document.getElementById('ad-close-btn');
+    const countdown = document.getElementById('ad-countdown');
+    const body    = document.getElementById('ad-body');
+    const footer  = document.getElementById('ad-footer');
+
+    // Style
+    popup.style.background = ad.bodyBg;
+    popup.style.borderColor = ad.borderColor;
+    topbar.style.background = ad.topbarColor;
+    topbar.style.color = ad.topbarText;
+    countdown.style.color = ad.topbarText;
+    closeBtn.style.color = ad.topbarText;
+    closeBtn.style.borderColor = ad.topbarText;
+    closeBtn.className = 'ad-close-btn' + (ad.sneaky ? ' sneaky' : '');
+
+    // Stats HTML
+    const statsHtml = ad.stats.map(s => `
+      <div class="ad-stat">
+        <div class="ad-stat-num" style="color:${ad.borderColor}">${s.num}</div>
+        <div class="ad-stat-label">${s.label}</div>
+      </div>`).join('');
+
+    body.innerHTML = `
+      <div class="ad-eyebrow" style="color:${ad.borderColor}">${ad.eyebrow}</div>
+      <div class="ad-headline">${ad.headline}</div>
+      <div class="ad-text">${ad.text}</div>
+      <div class="ad-stat-row">${statsHtml}</div>
+      <button class="ad-cta" style="background:${ad.ctaBg};color:${ad.ctaColor}" onclick="closeAd()">${ad.cta}</button>
+    `;
+    footer.textContent = ad.footer;
+
+    // Countdown: close button is labeled with seconds first
+    let secs = 3;
+    countdown.textContent = `Skip in ${secs}s`;
+    closeBtn.style.pointerEvents = 'none';
+    closeBtn.style.opacity = '0.35';
+    clearInterval(countdownInterval);
+    countdownInterval = setInterval(() => {
+      secs--;
+      if (secs <= 0) {
+        clearInterval(countdownInterval);
+        countdown.textContent = '';
+        closeBtn.style.pointerEvents = 'auto';
+        closeBtn.style.opacity = '1';
+      } else {
+        countdown.textContent = `Skip in ${secs}s`;
+      }
+    }, 1000);
+
+    overlay.classList.add('show');
+  }
+
+  function closeAd() {
+    clearInterval(countdownInterval);
+    document.getElementById('ad-overlay').classList.remove('show');
+    if (pendingCardIndex !== null) {
+      const idx = pendingCardIndex;
+      pendingCardIndex = null;
+      openCard(idx);
+    }
+  }
 
   function openCard(i) {
     const ch = chapters[i];
@@ -481,17 +411,19 @@
     dp.classList.add('active');
     document.getElementById('detail-tag').textContent = ch.tag;
     document.getElementById('detail-tag').style.background = ch.color;
+    document.getElementById('detail-tag').style.color = '#000';
     document.getElementById('detail-title').textContent = ch.title;
     document.getElementById('detail-hero').style.background = ch.bg;
-    document.getElementById('detail-hero-bg').style.setProperty('--accent', ch.color);
     document.getElementById('detail-body').innerHTML = ch.content;
-    window.scrollTo(0, 0);
+    // tint blockquote borders
+    document.querySelectorAll('#detail-body blockquote').forEach(bq => bq.style.borderColor = ch.color);
+    window.scrollTo(0,0);
   }
 
   function goHome() {
     document.getElementById('home-page').classList.remove('hidden');
     document.getElementById('detail-page').classList.remove('active');
-    window.scrollTo(0, 0);
+    window.scrollTo(0,0);
   }
 </script>
 </body>
