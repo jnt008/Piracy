@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Piracy & The Media Industry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #f0ece3;
+      --red: #c0392b;
+      --dim: #2a2a2a;
+      --muted: #888;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── HERO ── */
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      border-bottom: 1px solid var(--dim);
+      overflow: hidden;
+    }
+
+    .skull {
+      position: absolute;
+      right: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: clamp(18rem, 40vw, 36rem);
+      opacity: 0.04;
+      line-height: 1;
+      user-select: none;
+      animation: drift 8s ease-in-out infinite;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translateY(-50%) rotate(-3deg); }
+      50%       { transform: translateY(-52%) rotate(3deg); }
+    }
+
+    .kicker {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 18vw, 16rem);
+      line-height: 0.88;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s forwards;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--red);
+    }
+
+    .subtitle {
+      margin-top: 2.5rem;
+      max-width: 520px;
+      font-size: 1.25rem;
+      font-style: italic;
+      font-weight: 300;
+      color: #bbb;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.65s forwards;
+    }
+
+    .scroll-hint {
+      margin-top: 4rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 1s forwards;
+    }
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: var(--muted);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 6rem 2rem 8rem;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      margin-bottom: 5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 1.4rem;
+    }
+
+    p {
+      color: #ccc8be;
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+    }
+
+    /* ── DIVIDER ── */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--dim);
+      margin: 4rem 0;
+    }
+
+    /* ── PULL QUOTE ── */
+    blockquote {
+      border-left: 3px solid var(--red);
+      padding: 0.5rem 0 0.5rem 2rem;
+      margin: 2.5rem 0;
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.4;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--dim);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    footer span { color: var(--red); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      header { padding: 5rem 1.2rem 3rem; }
+      main { padding: 4rem 1.2rem 6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header>
+    <div class="skull">☠</div>
+    <p class="kicker">Essay &nbsp;·&nbsp; Media Studies &nbsp;·&nbsp; Digital Economy</p>
+    <h1>Piracy<span>&amp; The Media</span></h1>
+    <p class="subtitle">An examination of how digital piracy has reshaped revenue, distribution, and creativity across the modern media industry.</p>
+    <div class="scroll-hint">Scroll to read</div>
+  </header>
+
+  <!-- CONTENT -->
+  <main>
+
+    <section>
+      <p class="section-label">01 — Introduction</p>
+      <h2>What Is Piracy?</h2>
+      <p>
+        Digital piracy refers to the unauthorized reproduction, distribution, or consumption of copyrighted media — including music, film, television, software, and literature. Since the rise of the internet in the late 1990s, piracy has grown from a niche activity into a global phenomenon that challenges the foundations of the media industry.
+      </p>
+      <p>
+        This essay explores the wide-ranging effects of piracy: from lost revenue and legal battles, to its unintended role in democratizing access to culture and pushing the industry toward innovation.
+      </p>
+    </section>
+
+    <hr class="rule"/>
+
+    <section>
+      <p class="section-label">02 — Economic Impact</p>
+      <h2>The Cost to Industry</h2>
+      <p>
+        The financial toll of piracy on the media industry is significant. Major studios, record labels, and software developers report billions in lost revenue annually due to unauthorized copying and streaming. The music industry alone saw global revenues drop dramatically in the 2000s, largely attributed to file-sharing platforms like Napster.
+      </p>
+      <blockquote>
+        "Piracy is not just theft — it's a structural challenge to how creative industries fund themselves."
+      </blockquote>
+      <p>
+        Beyond direct losses, piracy creates a ripple effect: reduced investment in new content, layoffs across production companies, and a shrinking pool of resources for emerging artists and filmmakers.
+      </p>
+    </section>
+
+    <hr class="rule"/>
+
+    <section>
+      <p class="section-label">03 — Industry Response</p>
+      <h2>Adapting to Survive</h2>
+      <p>
+        Faced with widespread piracy, the media industry has been forced to innovate. Streaming platforms like Spotify and Netflix emerged as direct responses to the piracy problem — offering convenient, affordable, legal alternatives that undercut the appeal of illegal downloads.
+      </p>
+      <p>
+        Legal action has also played a role. Landmark cases against Napster, The Pirate Bay, and individual downloaders set precedents for how copyright law applies in the digital age. Yet enforcement alone has proven insufficient — for every site shut down, several more appear.
+      </p>
+    </section>
+
+    <hr class="rule"/>
+
+    <section>
+      <p class="section-label">04 — The Other Side</p>
+      <h2>Access, Culture &amp; Debate</h2>
+      <p>
+        Not all perspectives on piracy are wholly negative. Some researchers argue that piracy can act as a form of free advertising — exposing audiences to content they would not otherwise discover, and sometimes converting pirates into paying customers.
+      </p>
+      <p>
+        In regions with limited access to legal platforms or high costs of living, piracy may be the only practical means of accessing global culture. This raises important questions about equity, pricing, and the geographic limits of distribution deals.
+      </p>
+      <blockquote>
+        "The most dangerous pirate is one who would have paid, if only given the option."
+      </blockquote>
+    </section>
+
+    <hr class="rule"/>
+
+    <section>
+      <p class="section-label">05 — Conclusion</p>
+      <h2>Looking Forward</h2>
+      <p>
+        Piracy remains a defining challenge for the media industry in the digital age. While it unquestionably causes economic harm, it has also served as a powerful catalyst for change — pushing the industry toward more accessible, consumer-friendly models.
+      </p>
+      <p>
+        The long-term solution lies not only in legal enforcement, but in making legitimate access so convenient and fairly priced that piracy becomes the less attractive option. The battle against piracy is, ultimately, a battle for the future of how we value and distribute creative work.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>Piracy &amp; The Media Industry</span> &nbsp;·&nbsp; An Essay
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
