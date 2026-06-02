@@ -3,159 +3,89 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Piracy & The Media Industry</title>
+  <title>Piracy's Chain Reaction</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&family=Space+Mono&display=swap" rel="stylesheet"/>
   <style>
-    :root {
-      --bg: #0f0f0f;
-      --surface: #1a1a1a;
-      --border: #2a2a2a;
-      --red: #e50914;
-      --white: #ffffff;
-      --muted: #999;
-      --card-w: 200px;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+    :root { --bg:#0f0f0f; --border:#2a2a2a; --red:#e50914; --white:#ffffff; --muted:#999; --card-w:200px; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
 
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 3rem;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent);
-    }
-    .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.1em; color: var(--red); cursor: pointer; }
-    .logo span { color: var(--white); }
-    .nav-home { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); cursor: pointer; border: 1px solid var(--border); padding: 0.4rem 1rem; transition: all 0.2s; }
-    .nav-home:hover { color: var(--white); border-color: var(--white); }
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:linear-gradient(to bottom,rgba(0,0,0,0.95),transparent);}
+    .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.1em;color:var(--red);cursor:pointer;}
+    .logo span{color:var(--white);}
+    .nav-home{font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);cursor:pointer;border:1px solid var(--border);padding:0.4rem 1rem;transition:all 0.2s;}
+    .nav-home:hover{color:var(--white);border-color:var(--white);}
 
-    #home { min-height: 70vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 3rem 3rem; position: relative; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 40%, rgba(229,9,20,0.12) 0%, transparent 60%), repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 41px), var(--bg); }
-    .hero-bg::after { content: '☠'; position: absolute; right: 5%; top: 15%; font-size: 32vw; opacity: 0.03; line-height: 1; user-select: none; animation: sway 10s ease-in-out infinite; }
-    @keyframes sway { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
-    .hero-content { position: relative; max-width: 700px; }
-    .hero-tag { display: inline-block; background: var(--red); font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.3rem 0.8rem; margin-bottom: 1rem; }
-    .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 12vw, 9rem); line-height: 0.9; letter-spacing: 0.02em; animation: fadeUp 0.8s 0.2s both; }
-    .hero-title em { color: var(--red); font-style: normal; }
-    .hero-desc { margin-top: 1.2rem; font-size: 1rem; font-weight: 300; color: #bbb; max-width: 480px; line-height: 1.6; animation: fadeUp 0.8s 0.45s both; }
-    .hero-btn { margin-top: 1.8rem; display: inline-flex; align-items: center; gap: 0.6rem; background: var(--white); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.75rem 2rem; cursor: pointer; border: none; transition: background 0.2s, transform 0.15s; animation: fadeUp 0.8s 0.65s both; }
-    .hero-btn:hover { background: #ddd; transform: scale(1.03); }
-    @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: none; } }
+    #home{min-height:70vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3rem 3rem;position:relative;overflow:hidden;}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(229,9,20,0.12) 0%,transparent 60%),repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(255,255,255,0.012) 40px,rgba(255,255,255,0.012) 41px),var(--bg);}
+    .hero-bg::after{content:'☠';position:absolute;right:5%;top:15%;font-size:32vw;opacity:0.03;line-height:1;user-select:none;animation:sway 10s ease-in-out infinite;}
+    @keyframes sway{0%,100%{transform:rotate(-4deg);}50%{transform:rotate(4deg);}}
+    .hero-content{position:relative;max-width:700px;}
+    .hero-tag{display:inline-block;background:var(--red);font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.3rem 0.8rem;margin-bottom:1rem;}
+    .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,12vw,9rem);line-height:0.9;letter-spacing:0.02em;animation:fadeUp 0.8s 0.2s both;}
+    .hero-title em{color:var(--red);font-style:normal;}
+    .hero-desc{margin-top:1.2rem;font-size:1rem;font-weight:300;color:#bbb;max-width:480px;line-height:1.6;animation:fadeUp 0.8s 0.45s both;}
+    .hero-btn{margin-top:1.8rem;display:inline-flex;align-items:center;gap:0.6rem;background:var(--white);color:var(--bg);font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:600;padding:0.75rem 2rem;cursor:pointer;border:none;transition:background 0.2s,transform 0.15s;animation:fadeUp 0.8s 0.65s both;}
+    .hero-btn:hover{background:#ddd;transform:scale(1.03);}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
 
-    .row { padding: 2.5rem 3rem; }
-    .row-label { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.06em; margin-bottom: 1.2rem; }
-    .cards { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .row{padding:2.5rem 3rem;}
+    .row-label{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.06em;margin-bottom:1.2rem;}
+    .cards{display:flex;gap:1rem;flex-wrap:wrap;}
 
-    .card { width: var(--card-w); flex-shrink: 0; cursor: pointer; position: relative; transition: transform 0.25s; border-radius: 3px; }
-    .card:hover { transform: scale(1.08); z-index: 10; }
-    .card-thumb { width: 100%; aspect-ratio: 2/3; border-radius: 3px; overflow: hidden; position: relative; }
-    .card-thumb-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.06em; text-align: center; padding: 1rem; position: relative; z-index: 1; }
-    .card-thumb-inner .num { font-size: 3.5rem; line-height: 1; opacity: 0.25; position: absolute; bottom: 0.3rem; right: 0.5rem; }
-    .card-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); transition: background 0.25s; border-radius: 3px; display: flex; align-items: center; justify-content: center; }
-    .card:hover .card-overlay { background: rgba(0,0,0,0.55); }
-    .play-btn { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.9); display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(0.6); transition: opacity 0.2s, transform 0.2s; }
-    .play-btn svg { margin-left: 3px; }
-    .card:hover .play-btn { opacity: 1; transform: scale(1); }
-    .card-info { margin-top: 0.5rem; padding: 0 0.1rem; }
-    .card-title { font-size: 0.82rem; font-weight: 600; line-height: 1.3; }
-    .card-meta { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--muted); margin-top: 0.2rem; letter-spacing: 0.05em; }
+    .card{width:var(--card-w);flex-shrink:0;cursor:pointer;position:relative;transition:transform 0.25s;border-radius:3px;}
+    .card:hover{transform:scale(1.08);z-index:10;}
+    .card-thumb{width:100%;aspect-ratio:2/3;border-radius:3px;overflow:hidden;position:relative;}
+    .card-thumb-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.06em;text-align:center;padding:1rem;position:relative;z-index:1;}
+    .card-thumb-inner .num{font-size:3.5rem;line-height:1;opacity:0.25;position:absolute;bottom:0.3rem;right:0.5rem;}
+    .card-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background 0.25s;border-radius:3px;display:flex;align-items:center;justify-content:center;}
+    .card:hover .card-overlay{background:rgba(0,0,0,0.55);}
+    .play-btn{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(0.6);transition:opacity 0.2s,transform 0.2s;}
+    .play-btn svg{margin-left:3px;}
+    .card:hover .play-btn{opacity:1;transform:scale(1);}
+    .card-info{margin-top:0.5rem;padding:0 0.1rem;}
+    .card-title{font-size:0.82rem;font-weight:600;line-height:1.3;}
+    .card-meta{font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--muted);margin-top:0.2rem;letter-spacing:0.05em;}
 
-    /* ── DETAIL ── */
-    #detail-page { display: none; min-height: 100vh; padding-top: 5rem; }
-    #detail-page.active { display: block; }
-    #home-page.hidden { display: none; }
-    .detail-hero { padding: 3rem 3rem 2rem; position: relative; border-bottom: 1px solid var(--border); }
-    .detail-back { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; position: relative; }
-    .detail-back:hover { color: var(--white); }
-    .detail-tag { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.25rem 0.7rem; margin-bottom: 0.8rem; position: relative; }
-    .detail-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 8vw, 6rem); letter-spacing: 0.04em; line-height: 0.95; position: relative; }
-    .detail-body { max-width: 760px; margin: 0 auto; padding: 3rem; }
-    .detail-body p { color: #ccc; font-size: 1.1rem; font-weight: 300; line-height: 1.8; margin-bottom: 1.4rem; }
-    .detail-body blockquote { border-left: 3px solid var(--red); padding: 0.4rem 0 0.4rem 1.8rem; margin: 2rem 0; font-size: 1.35rem; font-style: italic; font-weight: 300; color: var(--white); line-height: 1.45; }
+    #detail-page{display:none;min-height:100vh;padding-top:5rem;}
+    #detail-page.active{display:block;}
+    #home-page.hidden{display:none;}
+    .detail-hero{padding:3rem 3rem 2rem;position:relative;border-bottom:1px solid var(--border);}
+    .detail-back{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem;position:relative;}
+    .detail-back:hover{color:var(--white);}
+    .detail-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.25rem 0.7rem;margin-bottom:0.8rem;position:relative;}
+    .detail-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,6rem);letter-spacing:0.04em;line-height:0.95;position:relative;}
+    .detail-body{max-width:760px;margin:0 auto;padding:3rem;}
+    .detail-body p{color:#ccc;font-size:1.1rem;font-weight:300;line-height:1.8;margin-bottom:1.4rem;}
+    .detail-body blockquote{border-left:3px solid var(--red);padding:0.4rem 0 0.4rem 1.8rem;margin:2rem 0;font-size:1.35rem;font-style:italic;font-weight:300;color:var(--white);line-height:1.45;}
 
-    footer { border-top: 1px solid var(--border); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-    footer .logo-sm { color: var(--red); font-family: 'Bebas Neue', sans-serif; font-size: 1rem; }
+    footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+    footer .logo-sm{color:var(--red);font-family:'Bebas Neue',sans-serif;font-size:1rem;}
 
-    /* ════════════════════════════
-       AD POPUP SYSTEM
-    ════════════════════════════ */
-    #ad-overlay {
-      display: none;
-      position: fixed; inset: 0; z-index: 9000;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(2px);
-      animation: overlayIn 0.15s ease;
-    }
-    #ad-overlay.show { display: flex; align-items: center; justify-content: center; }
-    @keyframes overlayIn { from { opacity:0; } to { opacity:1; } }
+    /* AD */
+    #ad-overlay{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.7);backdrop-filter:blur(2px);}
+    #ad-overlay.show{display:flex;align-items:center;justify-content:center;}
+    .ad-popup{position:relative;max-width:480px;width:90%;border:2px solid;animation:popIn 0.2s cubic-bezier(0.34,1.56,0.64,1);font-family:'DM Sans',sans-serif;overflow:hidden;}
+    @keyframes popIn{from{opacity:0;transform:scale(0.85) translateY(20px);}to{opacity:1;transform:none;}}
+    .ad-topbar{display:flex;align-items:center;justify-content:space-between;padding:0.4rem 0.8rem;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;}
+    .ad-close-btn{cursor:pointer;font-size:1.1rem;line-height:1;padding:0.1rem 0.4rem;border:1px solid currentColor;transition:opacity 0.15s;user-select:none;}
+    .ad-close-btn:hover{opacity:0.6;}
+    .ad-close-btn.sneaky:hover{transform:translate(6px,-4px);}
+    .ad-countdown{font-family:'Space Mono',monospace;font-size:0.58rem;opacity:0.7;}
+    .ad-body{padding:1.5rem 1.5rem 1.2rem;}
+    .ad-eyebrow{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.5rem;opacity:0.7;}
+    .ad-headline{font-family:'Bebas Neue',sans-serif;font-size:2rem;line-height:1;margin-bottom:0.8rem;letter-spacing:0.04em;}
+    .ad-text{font-size:0.9rem;font-weight:300;line-height:1.6;opacity:0.85;margin-bottom:1.2rem;}
+    .ad-stat-row{display:flex;gap:1.5rem;margin-bottom:1.2rem;}
+    .ad-stat{text-align:center;}
+    .ad-stat-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;line-height:1;}
+    .ad-stat-label{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;opacity:0.6;text-transform:uppercase;}
+    .ad-cta{display:inline-block;padding:0.6rem 1.4rem;font-size:0.85rem;font-weight:600;cursor:pointer;border:none;transition:opacity 0.15s;}
+    .ad-cta:hover{opacity:0.8;}
+    .ad-footer{padding:0.5rem 1.5rem 0.8rem;font-family:'Space Mono',monospace;font-size:0.52rem;opacity:0.4;letter-spacing:0.08em;border-top:1px solid rgba(255,255,255,0.08);}
 
-    .ad-popup {
-      position: relative;
-      max-width: 480px;
-      width: 90%;
-      border: 2px solid;
-      animation: popIn 0.2s cubic-bezier(0.34,1.56,0.64,1);
-      font-family: 'DM Sans', sans-serif;
-      overflow: hidden;
-    }
-    @keyframes popIn { from { opacity:0; transform: scale(0.85) translateY(20px); } to { opacity:1; transform: none; } }
-
-    .ad-topbar {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0.4rem 0.8rem;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
-    }
-    .ad-close-btn {
-      cursor: pointer;
-      font-size: 1.1rem;
-      line-height: 1;
-      padding: 0.1rem 0.4rem;
-      border: 1px solid currentColor;
-      transition: opacity 0.15s;
-      user-select: none;
-    }
-    .ad-close-btn:hover { opacity: 0.6; }
-
-    /* fake countdown */
-    .ad-countdown {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.58rem;
-      opacity: 0.7;
-    }
-
-    .ad-body { padding: 1.5rem 1.5rem 1.2rem; }
-    .ad-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; opacity: 0.7; }
-    .ad-headline { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; line-height: 1; margin-bottom: 0.8rem; letter-spacing: 0.04em; }
-    .ad-text { font-size: 0.9rem; font-weight: 300; line-height: 1.6; opacity: 0.85; margin-bottom: 1.2rem; }
-    .ad-stat-row { display: flex; gap: 1.5rem; margin-bottom: 1.2rem; }
-    .ad-stat { text-align: center; }
-    .ad-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; line-height: 1; }
-    .ad-stat-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.12em; opacity: 0.6; text-transform: uppercase; }
-    .ad-cta {
-      display: inline-block; padding: 0.6rem 1.4rem;
-      font-size: 0.85rem; font-weight: 600;
-      cursor: pointer; border: none;
-      transition: opacity 0.15s;
-    }
-    .ad-cta:hover { opacity: 0.8; }
-    .ad-footer { padding: 0.5rem 1.5rem 0.8rem; font-family: 'Space Mono', monospace; font-size: 0.52rem; opacity: 0.4; letter-spacing: 0.08em; border-top: 1px solid rgba(255,255,255,0.08); }
-
-    /* wiggling "X" that moves away from cursor on hover — easter egg */
-    .ad-close-btn.sneaky { transition: transform 0.15s; }
-    .ad-close-btn.sneaky:hover { transform: translate(6px, -4px); }
-
-    @media (max-width: 600px) {
-      nav, .row, .detail-hero, .detail-body, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
-      #home { padding: 0 1.2rem 2.5rem; }
-    }
+    @media(max-width:600px){nav,.row,.detail-hero,.detail-body,footer{padding-left:1.2rem;padding-right:1.2rem;}#home{padding:0 1.2rem 2.5rem;}}
   </style>
 </head>
 <body>
@@ -165,14 +95,13 @@
   <div class="nav-home" onclick="goHome()">← Home</div>
 </nav>
 
-<!-- HOME PAGE -->
 <div id="home-page">
   <section id="home">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <div class="hero-tag">Essay · Media Studies · 2026</div>
-      <h1 class="hero-title">PIRACY<br/><em>&amp; The Media</em><br/>Industry</h1>
-      <p class="hero-desc">An investigation into how digital piracy has disrupted revenue, reshaped distribution, and forced an entire industry to reinvent itself.</p>
+      <div class="hero-tag">WCWP 100 · Janie Tran · May 2026</div>
+      <h1 class="hero-title">PIRACY'S<br/><em>Chain</em><br/>Reaction</h1>
+      <p class="hero-desc">When a film anticipated for almost two decades surfaces online for free — what else is there to do other than watch it?</p>
       <button class="hero-btn" onclick="tryOpenCard(0)">▶ &nbsp;Start Reading</button>
     </div>
   </section>
@@ -182,11 +111,10 @@
   </div>
   <footer>
     <span class="logo-sm">PIRACYTV</span>
-    <span>An Essay on Digital Piracy &amp; The Media Industry</span>
+    <span>Piracy's Chain Reaction · Janie Tran · WCWP 100</span>
   </footer>
 </div>
 
-<!-- DETAIL PAGE -->
 <div id="detail-page">
   <div class="detail-hero" id="detail-hero">
     <div class="detail-back" onclick="goHome()">← Back to all chapters</div>
@@ -196,7 +124,6 @@
   <div class="detail-body" id="detail-body"></div>
 </div>
 
-<!-- AD OVERLAY -->
 <div id="ad-overlay">
   <div class="ad-popup" id="ad-popup">
     <div class="ad-topbar" id="ad-topbar">
@@ -210,221 +137,195 @@
 </div>
 
 <script>
-  const chapters = [
-    { num:"01", title:"What Is Piracy?", tag:"Introduction", color:"#e50914", bg:"#1a0000",
-      content:`<p>Digital piracy refers to the unauthorized reproduction, distribution, or consumption of copyrighted media — including music, film, television, software, and literature. Since the rise of the internet in the late 1990s, piracy has grown from a niche activity into a global phenomenon that challenges the foundations of the media industry.</p><p>From Napster's file-sharing revolution in 1999 to today's sophisticated torrent ecosystems and illegal streaming sites, piracy has continuously evolved alongside the technology meant to stop it.</p><blockquote>"The internet treats censorship as damage and routes around it." — John Gilmore</blockquote><p>This essay explores the wide-ranging effects of piracy: from lost revenue and legal battles, to its unintended role in democratizing access to culture and pushing the industry toward innovation.</p>`
-    },
-    { num:"02", title:"The Cost to Industry", tag:"Economic Impact", color:"#e87c16", bg:"#1a0d00",
-      content:`<p>The financial toll of piracy on the media industry is staggering. The music industry saw global revenues collapse from over $28 billion in 1999 to under $15 billion by 2014 — a period that directly overlapped with the explosion of file-sharing platforms.</p><p>Beyond direct revenue losses, piracy creates a ripple effect across the entire creative ecosystem. Reduced profits mean fewer resources for new projects, smaller budgets for emerging artists, and widespread layoffs.</p><blockquote>"Piracy is not just theft — it's a structural challenge to how creative industries fund themselves."</blockquote><p>Independent creators are hit hardest. While major studios can absorb losses, a filmmaker whose work is pirated before it recoups production costs may never be able to make another project.</p>`
-    },
-    { num:"03", title:"Legal Battles", tag:"Law & Enforcement", color:"#1a73e8", bg:"#00081a",
-      content:`<p>The media industry's legal response to piracy has been aggressive and, at times, controversial. Landmark cases against Napster (2001), Grokster (2005), and The Pirate Bay (2009) established key precedents for how copyright law applies in the digital age.</p><p>Mass litigation against individual users generated enormous public backlash. Critics argued the strategy was disproportionate, targeting ordinary people for damages far exceeding any actual harm caused.</p><blockquote>"You can't sue your way out of a business model problem."</blockquote><p>International enforcement remains a persistent challenge. Sites like The Pirate Bay have survived domain seizures and server raids by simply migrating across jurisdictions.</p>`
-    },
-    { num:"04", title:"The Streaming Revolution", tag:"Industry Response", color:"#1db954", bg:"#001a08",
-      content:`<p>The most effective response to piracy has not been legal action, but business model innovation. Netflix, Spotify, and their successors proved that consumers will pay for legal access — if the price is right and the experience is frictionless.</p><p>Global music streaming revenues grew from near zero in 2010 to over $17 billion by 2023. The convenience gap between legal and illegal sources narrowed dramatically.</p><blockquote>"The best anti-piracy tool ever created is a product people actually want to pay for."</blockquote><p>Yet the streaming era has created new tensions. The proliferation of competing services has fragmented the market in ways that some argue are pushing consumers back toward piracy out of frustration.</p>`
-    },
-    { num:"05", title:"Access & Equity", tag:"The Other Side", color:"#9b59b6", bg:"#0d001a",
-      content:`<p>In regions with limited access to legal platforms or prohibitive pricing, piracy may represent the only practical means of accessing global culture. A student in a developing nation paying $15/month for Netflix may be spending a significant fraction of their daily income.</p><p>Some researchers argue that piracy functions as a form of free advertising — exposing audiences to content they would never otherwise discover, and sometimes converting casual pirates into paying fans.</p><blockquote>"Geography should not determine who gets access to human creativity."</blockquote><p>This raises deeper questions about whether our current intellectual property frameworks, built for a physical-media world, are adequate for a global digital one.</p>`
-    },
-    { num:"06", title:"Looking Forward", tag:"Conclusion", color:"#e50914", bg:"#1a0000",
-      content:`<p>Piracy remains a defining challenge for the media industry in the digital age. Despite advances in streaming, DRM technology, and international legal cooperation, piracy has never been eradicated — and likely never will be.</p><p>The most promising path forward lies not in stricter enforcement, but in continued innovation toward access, affordability, and user experience.</p><blockquote>"The battle against piracy is, ultimately, a battle for the future of how we value and distribute creative work."</blockquote><p>Whether that transformation ultimately benefits creators, consumers, and culture — or primarily consolidates power among a handful of platform giants — remains the defining question of our digital moment.</p>`
-    }
-  ];
+const chapters = [
+  {
+    num:"01", title:"The Leaked Film", tag:"Introduction", color:"#e50914", bg:"#1a0000",
+    content:`
+      <p>When a film that's been anticipated by die-hard fans for almost two decades surfaces online for free, what else is there to do other than watch it? <em>Avatar: The Last Airbender</em> is a critically acclaimed animated series that aired on Nickelodeon in 2005 and has been adored by fans worldwide since its release. While there have been sequels created and live-action remakes, there hasn't been a story that follows the same lovable cast from the original show.</p>
+      <p><em>Avatar: Aang, The Last Airbender</em> is a Paramount exclusive film that aimed to do just that, being announced in February 2021, but was leaked months ahead of its intended release on October 9, 2026. As a college student and computer science major, I spend a lot of my day on the computer. Whether that's working on assignments or using my free time, the internet that I'm able to access there plays a large role in my life; it'll only become more essential in the future once I'm employed in the computer science field.</p>
+      <p>In the online digital communities that I frequent, leaked media like the aforementioned film circulate and are consumed by millions every day. It seems like an easy choice when placed side by side: wait for almost half a year and purchase a subscription to watch a movie I desperately want to see, or view it now for free.</p>
+      <blockquote>"If I choose to watch this leaked film, is it as simple to label it as a nefarious action that hurts others?"</blockquote>
+    `
+  },
+  {
+    num:"02", title:"The Community", tag:"r/Piracy & Culture", color:"#e87c16", bg:"#1a0d00",
+    content:`
+      <p>Although I knew how widespread piracy of media was in online spaces, I wanted to dive deeper into why it was such a popular option for people globally. I found a community on Reddit centered around piracy, r/Piracy, with over three million users when looking at forums online. In that forum, users were providing piracy websites for others to use, making jokes about committing the action, and even expressing their sadness about their favorite sites being removed.</p>
+      <blockquote>"People don't care about the morality of using these websites; they just want to watch something conveniently and without the price tag."</blockquote>
+      <p>In a sense, it was also about forming a sense of camaraderie amongst each other to combat the million-dollar corporations. Instead of submitting and paying hard-earned money to these wealthy executives to be able to enjoy our favorite pieces of media, any average person could rebel and obtain them for free. This also makes the action of piracy normalized, where so many people do it that it doesn't even seem like a crime.</p>
+      <p>I personally have heard peers casually talk about it, which contributes to the growing trend even more; if those around you participate in it, it seems like less of an issue to take part as well.</p>
+    `
+  },
+  {
+    num:"03", title:"Subscriber Fatigue", tag:"Accessibility & Greed", color:"#1a73e8", bg:"#00081a",
+    content:`
+      <p>I found that accessibility played a large role in the contribution to piracy becoming more prevalent, where corporate greed largely influences the average person into pirating. When looking at subscriptions to all these different streaming services, it's clear that capitalism is a driving factor and an underlying system. There are countless different platforms that each provide different films and television shows like Netflix, Hulu, and Disney+.</p>
+      <p>If you pay money every month to have a subscription service like Netflix, they provide many pieces of media for you to enjoy. Despite that, it's likely that they won't have a specific show that has been on your bucket list for a while. After doing research online, you realize you need to purchase another subscription to watch it on a different platform, like Hulu. This creates a phenomenon called "subscriber fatigue" — the frustrations of consumers who feel burdened by the endless subscriptions and rising costs in an increasingly fragmented streaming landscape.</p>
+      <p>Shows can move between platforms as different companies obtain the rights to them. <em>The Office</em> was originally available on Netflix until they lost the streaming rights on January 1, 2021 — it's now only on Peacock. <em>South Park</em> is split among different streaming services at the same time. And <em>Bleach: Thousand-Year Blood War</em> is on Hulu in the US but Disney+ internationally, all because of split licensing rights.</p>
+      <blockquote>"If I were to contribute to the growing piracy community, I could have every part in one place without spending a single penny."</blockquote>
+    `
+  },
+  {
+    num:"04", title:"Streamflation", tag:"Inflation & Rising Costs", color:"#1db954", bg:"#001a08",
+    content:`
+      <p>Inflation has also added to the pile of issues brought on by the lack of accessibility in terms of streaming media. Data from the Bureau of Labor Statistics, highlighted by Alex Weprin from the <em>Hollywood Reporter</em>, shows a 19.5% increase in the cost of subscription streaming services — customers have to pay more money for the same product that's being offered.</p>
+      <p>A drastic rise in prices when consumers are already forced to have multiple subscriptions leads to many unsubscribing altogether. About 40% of Americans polled by consulting firm Deloitte said they've cut back on entertainment subscriptions in the last three months because of financial concerns. About half said they pay too much for streaming video services, and nearly 75% expressed frustration that prices continue to rise.</p>
+      <blockquote>"The motivations of these corporations are to profit as much as possible and take advantage of consumers."</blockquote>
+      <p>Companies such as Netflix have even begun cracking down on sharing accounts to maximize their profits, which has turned many away from the platform. In a similar sense, streaming services have begun implementing ads into their lowest-tier subscriptions to sway customers into spending more money to remove those ads. These moves have directed more and more people towards piracy.</p>
+    `
+  },
+  {
+    num:"05", title:"The Workers", tag:"Who Really Pays", color:"#9b59b6", bg:"#0d001a",
+    content:`
+      <p>Although piracy exists largely as a result of consumers facing accessibility and price issues, corporations aren't the only ones taking financial hits; lower-level workers who are getting paid a wage by these companies are impacted without as much backing. In a study done by the U.S. Chamber of Commerce, there's an estimated minimum of $29.2 billion in lost revenue for the U.S. economy every year as a result of global online piracy.</p>
+      <p>This impact leads to workers such as animators, VFX artists, voice actors, and more in the entertainment industry being laid off or even underpaid in order for these corporations to compensate. Without consumers pouring in revenue from sources like streaming services, companies aren't able to profit as much, so they pass the financial hit down to the workers in the name of capitalism. If companies want to keep the same profits as before while generating less revenue, the solutions are cutting worker wages or even mass layoffs.</p>
+      <blockquote>"There's a moral stance that needs to be taken when making a decision between supporting the backbone of our society or saving money for entertainment."</blockquote>
+      <p>As a consumer, this serves as a large incentive to not contribute to piracy, as my actions would directly impact people in the workforce who are trying to provide for themselves and their families. This creates a tension between having realistic, affordable ways for consumers to access entertainment, and workers being treated fairly with well-paying jobs.</p>
+    `
+  },
+  {
+    num:"06", title:"Chain Reaction", tag:"Conclusion", color:"#e50914", bg:"#1a0000",
+    content:`
+      <p>When it comes to issues such as piracy, there are winners and losers. Workers whose livelihoods depend on these corporations are losing due to being laid off and having their wages cut. Corporations behind these streaming services are not necessarily losing as they can compensate for their profit losses and continue competing with each other to drive more sales. Consumers who participate in piracy are winning as they save more money, but those who don't participate are losing as they are being essentially extorted for profit.</p>
+      <blockquote>"When participating in piracy, you're fighting an unjust system put in place by those in power to continue staying in power; it's an act of rebellion."</blockquote>
+      <p>Even then, it's not as simple as a game of winners and losers. While people who pirate media can be blamed for the impacts on the workforce and economy, we should direct blame to the corporations who cause this piracy in the first place. When deciding to pirate a film, there are more implications than simply saving money.</p>
+      <p>As I navigate the space further throughout my career, I need to be conscious of the chain reaction and butterfly effect that my sole actions can cause.</p>
+    `
+  }
+];
 
-  // ── FAKE ADS ──
-  const ads = [
-    {
-      topbarColor: "#ff6600", topbarText: "#000",
-      bodyBg: "#1a0f00", bodyColor: "#fff", borderColor: "#ff6600",
-      eyebrow: "🔥 LIMITED TIME OFFER",
-      headline: "YOUR PC MAY BE AT RISK",
-      text: "Illegal streaming sites expose users to malware 3x more than legal platforms. Studies show 1 in 4 piracy site visits results in an unwanted software download.",
-      stats: [{num:"73%", label:"of piracy sites contain malware"}, {num:"3×", label:"more risky than legal sites"}],
-      cta: "Learn More", ctaBg: "#ff6600", ctaColor: "#000",
-      footer: "Sponsored · PiracyAwareness.org · Not actual malware. Probably.",
-      sneaky: false
-    },
-    {
-      topbarColor: "#00ccff", topbarText: "#000",
-      bodyBg: "#00101a", bodyColor: "#fff", borderColor: "#00ccff",
-      eyebrow: "📺 DID YOU KNOW?",
-      headline: "STREAMING KILLED THE PIRATE",
-      text: "After Spotify launched, music piracy in Sweden dropped by 25% within two years. When legal options are easy and affordable, people choose them.",
-      stats: [{num:"−25%", label:"piracy drop after Spotify"}, {num:"2 yrs", label:"for the shift to happen"}],
-      cta: "Close Ad", ctaBg: "#00ccff", ctaColor: "#000",
-      footer: "Advertisement · This is part of the essay experience · Yes, this is intentional.",
-      sneaky: false
-    },
-    {
-      topbarColor: "#ffcc00", topbarText: "#000",
-      bodyBg: "#1a1500", bodyColor: "#fff", borderColor: "#ffcc00",
-      eyebrow: "⚖️ FUN LEGAL FACT",
-      headline: "THE MOST EXPENSIVE SONG DOWNLOAD IN HISTORY",
-      text: "In 2009, Jammie Thomas-Rasset was fined $1.92 million for downloading 24 songs — that's $80,000 per song. The case was later reduced but remains a landmark in copyright law.",
-      stats: [{num:"$80K", label:"per song downloaded"}, {num:"24", label:"songs total"}],
-      cta: "Wow, OK", ctaBg: "#ffcc00", ctaColor: "#000",
-      footer: "Sponsored by: The RIAA (just kidding) · For educational purposes only.",
-      sneaky: true  // close button tries to dodge
-    },
-    {
-      topbarColor: "#cc00ff", topbarText: "#fff",
-      bodyBg: "#100018", bodyColor: "#fff", borderColor: "#cc00ff",
-      eyebrow: "🏴‍☠️ PIRACY TRIVIA",
-      headline: "THE PIRATE BAY IS OLDER THAN YOUTUBE",
-      text: "The Pirate Bay launched in 2003. YouTube launched in 2005. The world's most notorious piracy site predates the world's largest legal video platform by two years.",
-      stats: [{num:"2003", label:"Pirate Bay founded"}, {num:"2005", label:"YouTube launched"}],
-      cta: "Mind = Blown", ctaBg: "#cc00ff", ctaColor: "#fff",
-      footer: "This ad brought to you by: irony · Close to continue reading.",
-      sneaky: false
-    },
-    {
-      topbarColor: "#ff3366", topbarText: "#fff",
-      bodyBg: "#1a0010", bodyColor: "#fff", borderColor: "#ff3366",
-      eyebrow: "💸 INDUSTRY STAT",
-      headline: "NAPSTER HAD 80 MILLION USERS",
-      text: "At its peak in 2001, Napster had 80 million registered users sharing music for free. The entire US population at the time was 285 million. That's roughly 1 in 4 Americans.",
-      stats: [{num:"80M", label:"Napster users at peak"}, {num:"1 in 4", label:"Americans used it"}],
-      cta: "Got it", ctaBg: "#ff3366", ctaColor: "#fff",
-      footer: "Advertisement · Napster no longer exists in its original form · RIP.",
-      sneaky: false
-    }
-  ];
+const ads = [
+  {
+    topbarColor:"#ff6600", topbarText:"#000", bodyBg:"#1a0f00", borderColor:"#ff6600",
+    eyebrow:"📊 FROM THE ESSAY",
+    headline:"$29.2 BILLION LOST EVERY YEAR",
+    text:"The U.S. Chamber of Commerce estimates a minimum of $29.2 billion in lost revenue to the U.S. economy annually from global online piracy — and the workers, not the executives, absorb most of that hit.",
+    stats:[{num:"$29.2B",label:"lost per year"},{num:"~75%",label:"consumers frustrated by rising prices"}],
+    cta:"Got It", ctaBg:"#ff6600", ctaColor:"#000",
+    footer:"Source: U.S. Chamber of Commerce · Cited in Piracy's Chain Reaction by Janie Tran",
+    sneaky:false
+  },
+  {
+    topbarColor:"#00ccff", topbarText:"#000", bodyBg:"#00101a", borderColor:"#00ccff",
+    eyebrow:"🌐 DID YOU KNOW?",
+    headline:"R/PIRACY HAS 3 MILLION USERS",
+    text:"The Reddit community r/Piracy had over three million members as of May 2026 — sharing piracy sites, cracking jokes about it, and mourning their favorite sites going dark. That's a city the size of Chicago, organized around one idea.",
+    stats:[{num:"3M+",label:"r/Piracy members"},{num:"#1",label:"reason: convenience"}],
+    cta:"Interesting", ctaBg:"#00ccff", ctaColor:"#000",
+    footer:"Source: Reddit · Accessed May 31, 2026 · Cited in the essay",
+    sneaky:false
+  },
+  {
+    topbarColor:"#ffcc00", topbarText:"#000", bodyBg:"#1a1500", borderColor:"#ffcc00",
+    eyebrow:"💸 STREAMFLATION IS REAL",
+    headline:"19.5% PRICE HIKE ON STREAMING",
+    text:"U.S. government data from the Bureau of Labor Statistics confirms streaming subscription prices rose 19.5%. Meanwhile, 40% of Americans have already cut back on subscriptions due to financial concerns.",
+    stats:[{num:"19.5%",label:"price increase"},{num:"40%",label:"Americans cutting subs"}],
+    cta:"Close", ctaBg:"#ffcc00", ctaColor:"#000",
+    footer:"Source: Hollywood Reporter / BLS · Jan 2026 · Cited in Piracy's Chain Reaction",
+    sneaky:true
+  },
+  {
+    topbarColor:"#cc00ff", topbarText:"#fff", bodyBg:"#100018", borderColor:"#cc00ff",
+    eyebrow:"📺 LICENSING CHAOS",
+    headline:"THE OFFICE LEFT NETFLIX IN 2021",
+    text:"The Office — one of the most-watched shows ever — was pulled from Netflix on January 1, 2021 and moved exclusively to Peacock. Fans who wanted to keep watching had to pay for yet another subscription.",
+    stats:[{num:"Jan 1",label:"2021 departure"},{num:"Peacock",label:"new exclusive home"}],
+    cta:"That's annoying", ctaBg:"#cc00ff", ctaColor:"#fff",
+    footer:"As cited in Piracy's Chain Reaction · Streaming rights fragmentation in action",
+    sneaky:false
+  },
+  {
+    topbarColor:"#ff3366", topbarText:"#fff", bodyBg:"#1a0010", borderColor:"#ff3366",
+    eyebrow:"⚖️ THE REAL QUESTION",
+    headline:"WHO'S ACTUALLY TO BLAME?",
+    text:"\"We should direct blame to the corporations who cause this piracy in the first place.\" Piracy is a chain reaction — started by inaccessibility, fragmentation, and greed at the top.",
+    stats:[{num:"½",label:"consumers say they overpay"},{num:"75%",label:"frustrated by rising prices"}],
+    cta:"Fair Point", ctaBg:"#ff3366", ctaColor:"#fff",
+    footer:"Quote from Piracy's Chain Reaction by Janie Tran · WCWP 100 · May 2026",
+    sneaky:false
+  }
+];
 
-  let pendingCardIndex = null;
-  let countdownInterval = null;
+let pendingCardIndex = null, countdownInterval = null;
+const palette = ['linear-gradient(135deg,#1a0000,#3d0000)','linear-gradient(135deg,#1a0d00,#3d2000)','linear-gradient(135deg,#00081a,#001040)','linear-gradient(135deg,#001a08,#003318)','linear-gradient(135deg,#0d001a,#220038)','linear-gradient(135deg,#1a0000,#2a0010)'];
 
-  // Build cards
-  const grid = document.getElementById('card-grid');
-  const palette = [
-    'linear-gradient(135deg,#1a0000,#3d0000)',
-    'linear-gradient(135deg,#1a0d00,#3d2000)',
-    'linear-gradient(135deg,#00081a,#001040)',
-    'linear-gradient(135deg,#001a08,#003318)',
-    'linear-gradient(135deg,#0d001a,#220038)',
-    'linear-gradient(135deg,#1a0000,#2a0010)',
-  ];
-  chapters.forEach((ch, i) => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.onclick = () => tryOpenCard(i);
-    card.innerHTML = `
-      <div class="card-thumb">
-        <div class="card-thumb-inner" style="background:${palette[i]}">
-          <span style="font-size:0.7rem;font-family:'Space Mono',monospace;letter-spacing:0.15em;color:${ch.color};opacity:0.9">${ch.tag.toUpperCase()}</span>
-          <span style="font-size:1rem;text-align:center;line-height:1.2">${ch.title}</span>
-          <span class="num" style="color:${ch.color}">${ch.num}</span>
-        </div>
-        <div class="card-overlay">
-          <div class="play-btn">
-            <svg width="14" height="16" viewBox="0 0 14 16" fill="#111"><polygon points="0,0 14,8 0,16"/></svg>
-          </div>
-        </div>
+const grid = document.getElementById('card-grid');
+chapters.forEach((ch, i) => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.onclick = () => tryOpenCard(i);
+  card.innerHTML = `
+    <div class="card-thumb">
+      <div class="card-thumb-inner" style="background:${palette[i]}">
+        <span style="font-size:0.65rem;font-family:'Space Mono',monospace;letter-spacing:0.15em;color:${ch.color};opacity:0.9">${ch.tag.toUpperCase()}</span>
+        <span style="font-size:1rem;text-align:center;line-height:1.2">${ch.title}</span>
+        <span class="num" style="color:${ch.color}">${ch.num}</span>
       </div>
-      <div class="card-info">
-        <div class="card-title">${ch.title}</div>
-        <div class="card-meta">${ch.tag} · Chapter ${ch.num}</div>
-      </div>`;
-    grid.appendChild(card);
-  });
+      <div class="card-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="#111"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="card-info"><div class="card-title">${ch.title}</div><div class="card-meta">${ch.tag} · Chapter ${ch.num}</div></div>`;
+  grid.appendChild(card);
+});
 
-  // 40% chance of ad
-  function tryOpenCard(i) {
-    if (Math.random() < 0.40) {
-      pendingCardIndex = i;
-      showAd();
-    } else {
-      openCard(i);
-    }
-  }
+function tryOpenCard(i) {
+  if (Math.random() < 0.40) { pendingCardIndex = i; showAd(); }
+  else openCard(i);
+}
 
-  function showAd() {
-    const ad = ads[Math.floor(Math.random() * ads.length)];
-    const overlay = document.getElementById('ad-overlay');
-    const popup   = document.getElementById('ad-popup');
-    const topbar  = document.getElementById('ad-topbar');
-    const closeBtn = document.getElementById('ad-close-btn');
-    const countdown = document.getElementById('ad-countdown');
-    const body    = document.getElementById('ad-body');
-    const footer  = document.getElementById('ad-footer');
+function showAd() {
+  const ad = ads[Math.floor(Math.random() * ads.length)];
+  const popup = document.getElementById('ad-popup');
+  const topbar = document.getElementById('ad-topbar');
+  const closeBtn = document.getElementById('ad-close-btn');
+  const countdown = document.getElementById('ad-countdown');
+  const body = document.getElementById('ad-body');
+  const footer = document.getElementById('ad-footer');
+  popup.style.background = ad.bodyBg; popup.style.borderColor = ad.borderColor;
+  topbar.style.background = ad.topbarColor; topbar.style.color = ad.topbarText;
+  countdown.style.color = ad.topbarText; closeBtn.style.color = ad.topbarText;
+  closeBtn.style.borderColor = ad.topbarText;
+  closeBtn.className = 'ad-close-btn' + (ad.sneaky ? ' sneaky' : '');
+  const statsHtml = ad.stats.map(s => `<div class="ad-stat"><div class="ad-stat-num" style="color:${ad.borderColor}">${s.num}</div><div class="ad-stat-label">${s.label}</div></div>`).join('');
+  body.innerHTML = `<div class="ad-eyebrow" style="color:${ad.borderColor}">${ad.eyebrow}</div><div class="ad-headline">${ad.headline}</div><div class="ad-text">${ad.text}</div><div class="ad-stat-row">${statsHtml}</div><button class="ad-cta" style="background:${ad.ctaBg};color:${ad.ctaColor}" onclick="closeAd()">${ad.cta}</button>`;
+  footer.textContent = ad.footer;
+  let secs = 3;
+  countdown.textContent = `Skip in ${secs}s`;
+  closeBtn.style.pointerEvents = 'none'; closeBtn.style.opacity = '0.35';
+  clearInterval(countdownInterval);
+  countdownInterval = setInterval(() => {
+    secs--;
+    if (secs <= 0) { clearInterval(countdownInterval); countdown.textContent = ''; closeBtn.style.pointerEvents = 'auto'; closeBtn.style.opacity = '1'; }
+    else countdown.textContent = `Skip in ${secs}s`;
+  }, 1000);
+  document.getElementById('ad-overlay').classList.add('show');
+}
 
-    // Style
-    popup.style.background = ad.bodyBg;
-    popup.style.borderColor = ad.borderColor;
-    topbar.style.background = ad.topbarColor;
-    topbar.style.color = ad.topbarText;
-    countdown.style.color = ad.topbarText;
-    closeBtn.style.color = ad.topbarText;
-    closeBtn.style.borderColor = ad.topbarText;
-    closeBtn.className = 'ad-close-btn' + (ad.sneaky ? ' sneaky' : '');
+function closeAd() {
+  clearInterval(countdownInterval);
+  document.getElementById('ad-overlay').classList.remove('show');
+  if (pendingCardIndex !== null) { const idx = pendingCardIndex; pendingCardIndex = null; openCard(idx); }
+}
 
-    // Stats HTML
-    const statsHtml = ad.stats.map(s => `
-      <div class="ad-stat">
-        <div class="ad-stat-num" style="color:${ad.borderColor}">${s.num}</div>
-        <div class="ad-stat-label">${s.label}</div>
-      </div>`).join('');
+function openCard(i) {
+  const ch = chapters[i];
+  document.getElementById('home-page').classList.add('hidden');
+  document.getElementById('detail-page').classList.add('active');
+  document.getElementById('detail-tag').textContent = ch.tag;
+  document.getElementById('detail-tag').style.background = ch.color;
+  document.getElementById('detail-tag').style.color = '#000';
+  document.getElementById('detail-title').textContent = ch.title;
+  document.getElementById('detail-hero').style.background = ch.bg;
+  document.getElementById('detail-body').innerHTML = ch.content;
+  document.querySelectorAll('#detail-body blockquote').forEach(bq => bq.style.borderColor = ch.color);
+  window.scrollTo(0,0);
+}
 
-    body.innerHTML = `
-      <div class="ad-eyebrow" style="color:${ad.borderColor}">${ad.eyebrow}</div>
-      <div class="ad-headline">${ad.headline}</div>
-      <div class="ad-text">${ad.text}</div>
-      <div class="ad-stat-row">${statsHtml}</div>
-      <button class="ad-cta" style="background:${ad.ctaBg};color:${ad.ctaColor}" onclick="closeAd()">${ad.cta}</button>
-    `;
-    footer.textContent = ad.footer;
-
-    // Countdown: close button is labeled with seconds first
-    let secs = 3;
-    countdown.textContent = `Skip in ${secs}s`;
-    closeBtn.style.pointerEvents = 'none';
-    closeBtn.style.opacity = '0.35';
-    clearInterval(countdownInterval);
-    countdownInterval = setInterval(() => {
-      secs--;
-      if (secs <= 0) {
-        clearInterval(countdownInterval);
-        countdown.textContent = '';
-        closeBtn.style.pointerEvents = 'auto';
-        closeBtn.style.opacity = '1';
-      } else {
-        countdown.textContent = `Skip in ${secs}s`;
-      }
-    }, 1000);
-
-    overlay.classList.add('show');
-  }
-
-  function closeAd() {
-    clearInterval(countdownInterval);
-    document.getElementById('ad-overlay').classList.remove('show');
-    if (pendingCardIndex !== null) {
-      const idx = pendingCardIndex;
-      pendingCardIndex = null;
-      openCard(idx);
-    }
-  }
-
-  function openCard(i) {
-    const ch = chapters[i];
-    document.getElementById('home-page').classList.add('hidden');
-    const dp = document.getElementById('detail-page');
-    dp.classList.add('active');
-    document.getElementById('detail-tag').textContent = ch.tag;
-    document.getElementById('detail-tag').style.background = ch.color;
-    document.getElementById('detail-tag').style.color = '#000';
-    document.getElementById('detail-title').textContent = ch.title;
-    document.getElementById('detail-hero').style.background = ch.bg;
-    document.getElementById('detail-body').innerHTML = ch.content;
-    // tint blockquote borders
-    document.querySelectorAll('#detail-body blockquote').forEach(bq => bq.style.borderColor = ch.color);
-    window.scrollTo(0,0);
-  }
-
-  function goHome() {
-    document.getElementById('home-page').classList.remove('hidden');
-    document.getElementById('detail-page').classList.remove('active');
-    window.scrollTo(0,0);
-  }
+function goHome() {
+  document.getElementById('home-page').classList.remove('hidden');
+  document.getElementById('detail-page').classList.remove('active');
+  window.scrollTo(0,0);
+}
 </script>
 </body>
 </html>
