@@ -6,86 +6,141 @@
   <title>Piracy's Chain Reaction</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&family=Space+Mono&display=swap" rel="stylesheet"/>
   <style>
-    :root { --bg:#0f0f0f; --border:#2a2a2a; --red:#e50914; --white:#ffffff; --muted:#999; --card-w:200px; }
+    :root { --bg:#0f0f0f; --surface:#1a1a1a; --border:#2a2a2a; --red:#e50914; --white:#fff; --muted:#999; --green:#4ade80; --card-w:200px; }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
 
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:linear-gradient(to bottom,rgba(0,0,0,0.95),transparent);}
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:linear-gradient(to bottom,rgba(0,0,0,0.97),transparent);}
     .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.1em;color:var(--red);cursor:pointer;}
     .logo span{color:var(--white);}
     .nav-home{font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);cursor:pointer;border:1px solid var(--border);padding:0.4rem 1rem;transition:all 0.2s;}
     .nav-home:hover{color:var(--white);border-color:var(--white);}
 
+    /* HOME HERO */
     #home{min-height:70vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3rem 3rem;position:relative;overflow:hidden;}
-    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(229,9,20,0.12) 0%,transparent 60%),repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(255,255,255,0.012) 40px,rgba(255,255,255,0.012) 41px),var(--bg);}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(229,9,20,0.12) 0%,transparent 60%),var(--bg);}
     .hero-bg::after{content:'☠';position:absolute;right:5%;top:15%;font-size:32vw;opacity:0.03;line-height:1;user-select:none;animation:sway 10s ease-in-out infinite;}
     @keyframes sway{0%,100%{transform:rotate(-4deg);}50%{transform:rotate(4deg);}}
     .hero-content{position:relative;max-width:700px;}
     .hero-tag{display:inline-block;background:var(--red);font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.3rem 0.8rem;margin-bottom:1rem;}
-    .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,12vw,9rem);line-height:0.9;letter-spacing:0.02em;animation:fadeUp 0.8s 0.2s both;}
+    .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,12vw,9rem);line-height:0.9;animation:fadeUp 0.8s 0.2s both;}
     .hero-title em{color:var(--red);font-style:normal;}
     .hero-desc{margin-top:1.2rem;font-size:1rem;font-weight:300;color:#bbb;max-width:480px;line-height:1.6;animation:fadeUp 0.8s 0.45s both;}
-    .hero-btn{margin-top:1.8rem;display:inline-flex;align-items:center;gap:0.6rem;background:var(--white);color:var(--bg);font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:600;padding:0.75rem 2rem;cursor:pointer;border:none;transition:background 0.2s,transform 0.15s;animation:fadeUp 0.8s 0.65s both;}
+    .hero-btn{margin-top:1.8rem;display:inline-flex;align-items:center;gap:0.6rem;background:var(--white);color:var(--bg);font-size:0.95rem;font-weight:600;padding:0.75rem 2rem;cursor:pointer;border:none;transition:background 0.2s,transform 0.15s;animation:fadeUp 0.8s 0.65s both;}
     .hero-btn:hover{background:#ddd;transform:scale(1.03);}
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
 
+    /* HOME CARDS ROW */
     .row{padding:2.5rem 3rem;}
     .row-label{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.06em;margin-bottom:1.2rem;}
     .cards{display:flex;gap:1rem;flex-wrap:wrap;}
-
     .card{width:var(--card-w);flex-shrink:0;cursor:pointer;position:relative;transition:transform 0.25s;border-radius:3px;}
     .card:hover{transform:scale(1.08);z-index:10;}
     .card-thumb{width:100%;aspect-ratio:2/3;border-radius:3px;overflow:hidden;position:relative;}
-    .card-thumb-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.06em;text-align:center;padding:1rem;position:relative;z-index:1;}
+    .card-thumb-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.06em;text-align:center;padding:1rem;position:relative;z-index:1;}
     .card-thumb-inner .num{font-size:3.5rem;line-height:1;opacity:0.25;position:absolute;bottom:0.3rem;right:0.5rem;}
     .card-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background 0.25s;border-radius:3px;display:flex;align-items:center;justify-content:center;}
     .card:hover .card-overlay{background:rgba(0,0,0,0.55);}
     .play-btn{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(0.6);transition:opacity 0.2s,transform 0.2s;}
     .play-btn svg{margin-left:3px;}
     .card:hover .play-btn{opacity:1;transform:scale(1);}
-    .card-info{margin-top:0.5rem;padding:0 0.1rem;}
+    .card-info{margin-top:0.5rem;}
     .card-title{font-size:0.82rem;font-weight:600;line-height:1.3;}
-    .card-meta{font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--muted);margin-top:0.2rem;letter-spacing:0.05em;}
+    .card-meta{font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--muted);margin-top:0.2rem;}
 
-    #detail-page{display:none;min-height:100vh;padding-top:5rem;}
-    #detail-page.active{display:block;}
+    /* PAGE VISIBILITY */
     #home-page.hidden{display:none;}
-    .detail-hero{padding:3rem 3rem 2rem;position:relative;border-bottom:1px solid var(--border);}
-    .detail-back{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem;position:relative;}
-    .detail-back:hover{color:var(--white);}
-    .detail-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.25rem 0.7rem;margin-bottom:0.8rem;position:relative;}
-    .detail-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,6rem);letter-spacing:0.04em;line-height:0.95;position:relative;}
-    .detail-body{max-width:760px;margin:0 auto;padding:3rem;}
-    .detail-body p{color:#ccc;font-size:1.1rem;font-weight:300;line-height:1.8;margin-bottom:1.4rem;}
-    .detail-body blockquote{border-left:3px solid var(--red);padding:0.4rem 0 0.4rem 1.8rem;margin:2rem 0;font-size:1.35rem;font-style:italic;font-weight:300;color:var(--white);line-height:1.45;}
+    #detail-page{display:none;}
+    #detail-page.active{display:block;}
 
-    footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
-    footer .logo-sm{color:var(--red);font-family:'Bebas Neue',sans-serif;font-size:1rem;}
+    /* ── DETAIL PAGE: VIDEO PLAYER LAYOUT ── */
+    .detail-wrap{display:flex;gap:0;min-height:calc(100vh - 60px);padding-top:60px;}
 
-    /* AD */
-    #ad-overlay{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.7);backdrop-filter:blur(2px);}
+    /* Left column */
+    .detail-main{flex:1;min-width:0;display:flex;flex-direction:column;}
+
+    .player-area{background:#000;position:relative;width:100%;}
+    .player-info-bar{background:#111;padding:0.5rem 1rem;font-family:'Space Mono',monospace;font-size:0.7rem;color:#bbb;letter-spacing:0.05em;}
+    .player-video{width:100%;aspect-ratio:16/9;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;position:relative;}
+    .player-essay-text{max-width:680px;padding:1.5rem 2rem;text-align:center;}
+    .player-essay-text .chapter-tag{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.5rem;}
+    .player-essay-text h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;margin-bottom:0.8rem;line-height:1;}
+    .player-essay-text p{font-size:0.95rem;color:#ccc;font-weight:300;line-height:1.7;text-align:left;}
+    .player-essay-text blockquote{border-left:3px solid var(--red);padding:0.3rem 0 0.3rem 1.2rem;margin:1rem 0;font-size:1.05rem;font-style:italic;color:var(--white);line-height:1.4;}
+
+    /* Fake player controls */
+    .player-controls{background:#111;padding:0.6rem 1rem;display:flex;flex-direction:column;gap:0.5rem;}
+    .progress-bar{width:100%;height:4px;background:#333;border-radius:2px;cursor:pointer;position:relative;}
+    .progress-fill{height:100%;border-radius:2px;background:var(--red);width:2%;}
+    .controls-row{display:flex;align-items:center;justify-content:space-between;}
+    .ctrl-left{display:flex;align-items:center;gap:1rem;}
+    .ctrl-right{display:flex;align-items:center;gap:0.8rem;}
+    .ctrl-btn{background:none;border:none;color:var(--white);cursor:pointer;font-size:1rem;padding:0.2rem;opacity:0.85;}
+    .ctrl-btn:hover{opacity:1;}
+    .ctrl-time{font-family:'Space Mono',monospace;font-size:0.7rem;color:#bbb;}
+    .ctrl-icon{width:20px;height:20px;opacity:0.8;cursor:pointer;}
+    .ctrl-icon:hover{opacity:1;}
+
+    .player-actions{background:#0a0a0a;padding:0.8rem 1rem;display:flex;align-items:center;gap:1rem;border-top:1px solid var(--border);}
+    .action-btn{display:flex;align-items:center;gap:0.4rem;background:var(--surface);border:1px solid var(--border);color:var(--white);padding:0.4rem 1rem;font-size:0.8rem;cursor:pointer;border-radius:2px;transition:background 0.2s;}
+    .action-btn:hover{background:#2a2a2a;}
+    .action-btn.trailer{background:#FF0000;border-color:#FF0000;}
+    .action-btn.trailer:hover{background:#cc0000;}
+    .server-btn{background:var(--red);border:none;color:var(--white);padding:0.5rem 1.2rem;font-size:0.85rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:0.5rem;border-radius:2px;}
+
+    /* Comments */
+    .comments-section{padding:1.5rem 1rem 3rem;border-top:1px solid var(--border);}
+    .comments-title{font-size:1.1rem;font-weight:600;margin-bottom:1.5rem;}
+    .comment{display:flex;gap:0.8rem;padding:1rem 0;border-bottom:1px solid #1a1a1a;}
+    .comment-avatar{width:38px;height:38px;border-radius:50%;flex-shrink:0;background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:600;text-transform:uppercase;}
+    .comment-body{flex:1;}
+    .comment-header{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;}
+    .comment-user{font-size:0.82rem;font-weight:600;color:var(--green);}
+    .comment-time{font-size:0.72rem;color:var(--muted);}
+    .comment-text{font-size:0.9rem;color:#ddd;line-height:1.5;}
+    .comment-footer{margin-top:0.5rem;display:flex;align-items:center;gap:1rem;}
+    .comment-likes{font-size:0.78rem;color:var(--muted);}
+    .comment-reply{font-size:0.75rem;color:var(--muted);cursor:pointer;text-decoration:underline;}
+    .comment-reply:hover{color:var(--white);}
+
+    /* Right sidebar */
+    .detail-sidebar{width:320px;flex-shrink:0;background:#0a0a0a;border-left:1px solid var(--border);padding:1rem;overflow-y:auto;}
+    .sidebar-title{font-size:0.9rem;font-weight:600;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+    .sidebar-card{display:flex;gap:0.7rem;margin-bottom:1rem;cursor:pointer;padding:0.4rem;border-radius:3px;transition:background 0.15s;}
+    .sidebar-card:hover{background:var(--surface);}
+    .sidebar-thumb{width:80px;aspect-ratio:2/3;flex-shrink:0;border-radius:2px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:0.7rem;text-align:center;padding:0.3rem;position:relative;}
+    .sidebar-thumb .s-num{position:absolute;bottom:2px;right:4px;font-size:1.6rem;opacity:0.2;}
+    .sidebar-info{flex:1;min-width:0;}
+    .sidebar-name{font-size:0.82rem;font-weight:600;line-height:1.3;margin-bottom:0.2rem;}
+    .sidebar-meta{font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--muted);}
+
+    /* AD POPUP */
+    #ad-overlay{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.75);backdrop-filter:blur(2px);}
     #ad-overlay.show{display:flex;align-items:center;justify-content:center;}
-    .ad-popup{position:relative;max-width:480px;width:90%;border:2px solid;animation:popIn 0.2s cubic-bezier(0.34,1.56,0.64,1);font-family:'DM Sans',sans-serif;overflow:hidden;}
+    .ad-popup{max-width:480px;width:90%;border:2px solid;animation:popIn 0.2s cubic-bezier(0.34,1.56,0.64,1);overflow:hidden;}
     @keyframes popIn{from{opacity:0;transform:scale(0.85) translateY(20px);}to{opacity:1;transform:none;}}
     .ad-topbar{display:flex;align-items:center;justify-content:space-between;padding:0.4rem 0.8rem;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;}
-    .ad-close-btn{cursor:pointer;font-size:1.1rem;line-height:1;padding:0.1rem 0.4rem;border:1px solid currentColor;transition:opacity 0.15s;user-select:none;}
-    .ad-close-btn:hover{opacity:0.6;}
+    .ad-close-btn{cursor:pointer;font-size:1.1rem;padding:0.1rem 0.4rem;border:1px solid currentColor;user-select:none;}
     .ad-close-btn.sneaky:hover{transform:translate(6px,-4px);}
-    .ad-countdown{font-family:'Space Mono',monospace;font-size:0.58rem;opacity:0.7;}
+    .ad-countdown{font-size:0.58rem;opacity:0.7;}
     .ad-body{padding:1.5rem 1.5rem 1.2rem;}
     .ad-eyebrow{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.5rem;opacity:0.7;}
-    .ad-headline{font-family:'Bebas Neue',sans-serif;font-size:2rem;line-height:1;margin-bottom:0.8rem;letter-spacing:0.04em;}
+    .ad-headline{font-family:'Bebas Neue',sans-serif;font-size:2rem;line-height:1;margin-bottom:0.8rem;}
     .ad-text{font-size:0.9rem;font-weight:300;line-height:1.6;opacity:0.85;margin-bottom:1.2rem;}
     .ad-stat-row{display:flex;gap:1.5rem;margin-bottom:1.2rem;}
     .ad-stat{text-align:center;}
     .ad-stat-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;line-height:1;}
     .ad-stat-label{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;opacity:0.6;text-transform:uppercase;}
-    .ad-cta{display:inline-block;padding:0.6rem 1.4rem;font-size:0.85rem;font-weight:600;cursor:pointer;border:none;transition:opacity 0.15s;}
-    .ad-cta:hover{opacity:0.8;}
-    .ad-footer{padding:0.5rem 1.5rem 0.8rem;font-family:'Space Mono',monospace;font-size:0.52rem;opacity:0.4;letter-spacing:0.08em;border-top:1px solid rgba(255,255,255,0.08);}
+    .ad-cta{display:inline-block;padding:0.6rem 1.4rem;font-size:0.85rem;font-weight:600;cursor:pointer;border:none;}
+    .ad-footer{padding:0.5rem 1.5rem 0.8rem;font-family:'Space Mono',monospace;font-size:0.52rem;opacity:0.4;border-top:1px solid rgba(255,255,255,0.08);}
 
-    @media(max-width:600px){nav,.row,.detail-hero,.detail-body,footer{padding-left:1.2rem;padding-right:1.2rem;}#home{padding:0 1.2rem 2.5rem;}}
+    footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+    footer .logo-sm{color:var(--red);font-family:'Bebas Neue',sans-serif;font-size:1rem;}
+
+    @media(max-width:900px){.detail-sidebar{display:none;}.detail-wrap{flex-direction:column;}}
+    @media(max-width:600px){nav,.row,footer{padding-left:1.2rem;padding-right:1.2rem;}#home{padding:0 1.2rem 2.5rem;}}
   </style>
 </head>
 <body>
@@ -95,6 +150,7 @@
   <div class="nav-home" onclick="goHome()">← Home</div>
 </nav>
 
+<!-- HOME PAGE -->
 <div id="home-page">
   <section id="home">
     <div class="hero-bg"></div>
@@ -115,15 +171,58 @@
   </footer>
 </div>
 
+<!-- DETAIL PAGE -->
 <div id="detail-page">
-  <div class="detail-hero" id="detail-hero">
-    <div class="detail-back" onclick="goHome()">← Back to all chapters</div>
-    <div class="detail-tag" id="detail-tag"></div>
-    <h2 class="detail-title" id="detail-title"></h2>
+  <div class="detail-wrap">
+    <!-- MAIN LEFT -->
+    <div class="detail-main">
+      <div class="player-area">
+        <div class="player-info-bar">Info: if you're here to read about piracy, you're in the right place. Switch chapters using the sidebar.</div>
+        <div class="player-video" id="player-video">
+          <div class="player-essay-text" id="essay-content"></div>
+        </div>
+        <div class="player-controls">
+          <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+          <div class="controls-row">
+            <div class="ctrl-left">
+              <button class="ctrl-btn">▶</button>
+              <button class="ctrl-btn" style="font-size:0.8rem">⏮ 10</button>
+              <button class="ctrl-btn" style="font-size:0.8rem">10 ⏭</button>
+              <button class="ctrl-btn">🔊</button>
+              <span class="ctrl-time" id="ctrl-time">00:01 / 48:03</span>
+            </div>
+            <div class="ctrl-right">
+              <span class="ctrl-btn">⬛</span>
+              <span class="ctrl-btn">⚙</span>
+              <span class="ctrl-btn">⛶</span>
+            </div>
+          </div>
+        </div>
+        <div class="player-actions">
+          <button class="server-btn">☰ Select a Server</button>
+          <button class="action-btn">🌙</button>
+          <button class="action-btn">♡</button>
+          <button class="action-btn">✈</button>
+          <button class="action-btn trailer">▶ YouTube Trailer</button>
+        </div>
+      </div>
+
+      <!-- COMMENTS -->
+      <div class="comments-section">
+        <div class="comments-title" id="comments-title">38 comments</div>
+        <div id="comments-list"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="detail-sidebar">
+      <div class="sidebar-title">Other Chapters</div>
+      <div id="sidebar-list"></div>
+    </div>
   </div>
-  <div class="detail-body" id="detail-body"></div>
 </div>
 
+<!-- AD OVERLAY -->
 <div id="ad-overlay">
   <div class="ad-popup" id="ad-popup">
     <div class="ad-topbar" id="ad-topbar">
@@ -140,116 +239,135 @@
 const chapters = [
   {
     num:"01", title:"The Leaked Film", tag:"Introduction", color:"#e50914", bg:"#1a0000",
+    time:"12:47",
     content:`
+      <div class="chapter-tag" style="color:#e50914">Introduction</div>
+      <h2>The Leaked Film</h2>
       <p>When a film that's been anticipated by die-hard fans for almost two decades surfaces online for free, what else is there to do other than watch it? <em>Avatar: The Last Airbender</em> is a critically acclaimed animated series that aired on Nickelodeon in 2005 and has been adored by fans worldwide since its release. While there have been sequels created and live-action remakes, there hasn't been a story that follows the same lovable cast from the original show.</p>
-      <p><em>Avatar: Aang, The Last Airbender</em> is a Paramount exclusive film that aimed to do just that, being announced in February 2021, but was leaked months ahead of its intended release on October 9, 2026. As a college student and computer science major, I spend a lot of my day on the computer. Whether that's working on assignments or using my free time, the internet that I'm able to access there plays a large role in my life; it'll only become more essential in the future once I'm employed in the computer science field.</p>
-      <p>In the online digital communities that I frequent, leaked media like the aforementioned film circulate and are consumed by millions every day. It seems like an easy choice when placed side by side: wait for almost half a year and purchase a subscription to watch a movie I desperately want to see, or view it now for free.</p>
+      <p><em>Avatar: Aang, The Last Airbender</em> is a Paramount exclusive film announced in February 2021, but was leaked months ahead of its intended release on October 9, 2026. As a college student and computer science major, I spend a lot of my day on the computer — and the internet plays a large role in my life.</p>
+      <p>In the online digital communities that I frequent, leaked media like this film circulate and are consumed by millions every day. It seems like an easy choice: wait almost half a year and purchase a subscription, or view it now for free.</p>
       <blockquote>"If I choose to watch this leaked film, is it as simple to label it as a nefarious action that hurts others?"</blockquote>
     `
   },
   {
     num:"02", title:"The Community", tag:"r/Piracy & Culture", color:"#e87c16", bg:"#1a0d00",
+    time:"09:22",
     content:`
-      <p>Although I knew how widespread piracy of media was in online spaces, I wanted to dive deeper into why it was such a popular option for people globally. I found a community on Reddit centered around piracy, r/Piracy, with over three million users when looking at forums online. In that forum, users were providing piracy websites for others to use, making jokes about committing the action, and even expressing their sadness about their favorite sites being removed.</p>
+      <div class="chapter-tag" style="color:#e87c16">r/Piracy & Culture</div>
+      <h2>The Community</h2>
+      <p>Although I knew how widespread piracy of media was in online spaces, I wanted to dive deeper into why it was such a popular option for people globally. I found a community on Reddit centered around piracy, r/Piracy, with over three million users. In that forum, users were providing piracy websites for others to use, making jokes about committing the action, and even expressing their sadness about their favorite sites being removed.</p>
       <blockquote>"People don't care about the morality of using these websites; they just want to watch something conveniently and without the price tag."</blockquote>
-      <p>In a sense, it was also about forming a sense of camaraderie amongst each other to combat the million-dollar corporations. Instead of submitting and paying hard-earned money to these wealthy executives to be able to enjoy our favorite pieces of media, any average person could rebel and obtain them for free. This also makes the action of piracy normalized, where so many people do it that it doesn't even seem like a crime.</p>
-      <p>I personally have heard peers casually talk about it, which contributes to the growing trend even more; if those around you participate in it, it seems like less of an issue to take part as well.</p>
+      <p>In a sense, it was also about forming a sense of camaraderie to combat the million-dollar corporations. Any average person could rebel and obtain media for free. This also makes piracy normalized — so many people do it that it doesn't even seem like a crime. I personally have heard peers casually talk about it, which contributes to the growing trend even more.</p>
     `
   },
   {
     num:"03", title:"Subscriber Fatigue", tag:"Accessibility & Greed", color:"#1a73e8", bg:"#00081a",
+    time:"11:05",
     content:`
-      <p>I found that accessibility played a large role in the contribution to piracy becoming more prevalent, where corporate greed largely influences the average person into pirating. When looking at subscriptions to all these different streaming services, it's clear that capitalism is a driving factor and an underlying system. There are countless different platforms that each provide different films and television shows like Netflix, Hulu, and Disney+.</p>
-      <p>If you pay money every month to have a subscription service like Netflix, they provide many pieces of media for you to enjoy. Despite that, it's likely that they won't have a specific show that has been on your bucket list for a while. After doing research online, you realize you need to purchase another subscription to watch it on a different platform, like Hulu. This creates a phenomenon called "subscriber fatigue" — the frustrations of consumers who feel burdened by the endless subscriptions and rising costs in an increasingly fragmented streaming landscape.</p>
-      <p>Shows can move between platforms as different companies obtain the rights to them. <em>The Office</em> was originally available on Netflix until they lost the streaming rights on January 1, 2021 — it's now only on Peacock. <em>South Park</em> is split among different streaming services at the same time. And <em>Bleach: Thousand-Year Blood War</em> is on Hulu in the US but Disney+ internationally, all because of split licensing rights.</p>
+      <div class="chapter-tag" style="color:#1a73e8">Accessibility & Greed</div>
+      <h2>Subscriber Fatigue</h2>
+      <p>Accessibility played a large role in the growth of piracy, where corporate greed largely influences the average person into pirating. There are countless platforms that each provide different content: Netflix, Hulu, Disney+. If you pay for Netflix, they provide many pieces of media — but it's likely they won't have a specific show on your bucket list.</p>
+      <p>This creates "subscriber fatigue" — the frustrations of consumers who feel burdened by endless subscriptions and rising costs in an increasingly fragmented streaming landscape. <em>The Office</em> left Netflix for Peacock on January 1, 2021. <em>South Park</em> is split among multiple services simultaneously. <em>Bleach: Thousand-Year Blood War</em> is on Hulu in the US but Disney+ internationally.</p>
       <blockquote>"If I were to contribute to the growing piracy community, I could have every part in one place without spending a single penny."</blockquote>
     `
   },
   {
     num:"04", title:"Streamflation", tag:"Inflation & Rising Costs", color:"#1db954", bg:"#001a08",
+    time:"08:34",
     content:`
-      <p>Inflation has also added to the pile of issues brought on by the lack of accessibility in terms of streaming media. Data from the Bureau of Labor Statistics, highlighted by Alex Weprin from the <em>Hollywood Reporter</em>, shows a 19.5% increase in the cost of subscription streaming services — customers have to pay more money for the same product that's being offered.</p>
-      <p>A drastic rise in prices when consumers are already forced to have multiple subscriptions leads to many unsubscribing altogether. About 40% of Americans polled by consulting firm Deloitte said they've cut back on entertainment subscriptions in the last three months because of financial concerns. About half said they pay too much for streaming video services, and nearly 75% expressed frustration that prices continue to rise.</p>
+      <div class="chapter-tag" style="color:#1db954">Inflation & Rising Costs</div>
+      <h2>Streamflation</h2>
+      <p>Inflation has added to the pile of issues brought on by the lack of accessibility in streaming. Data from the Bureau of Labor Statistics, highlighted by the <em>Hollywood Reporter</em>, shows a 19.5% increase in the cost of subscription streaming services — customers pay more money for the same product.</p>
+      <p>About 40% of Americans polled by Deloitte said they've cut back on entertainment subscriptions due to financial concerns. About half said they pay too much for streaming video, and nearly 75% expressed frustration that prices continue to rise.</p>
       <blockquote>"The motivations of these corporations are to profit as much as possible and take advantage of consumers."</blockquote>
-      <p>Companies such as Netflix have even begun cracking down on sharing accounts to maximize their profits, which has turned many away from the platform. In a similar sense, streaming services have begun implementing ads into their lowest-tier subscriptions to sway customers into spending more money to remove those ads. These moves have directed more and more people towards piracy.</p>
+      <p>Netflix has cracked down on account sharing. Streaming services now implement ads into their lowest-tier subscriptions to push customers into spending more. These moves have directed more and more people toward piracy.</p>
     `
   },
   {
     num:"05", title:"The Workers", tag:"Who Really Pays", color:"#9b59b6", bg:"#0d001a",
+    time:"10:18",
     content:`
-      <p>Although piracy exists largely as a result of consumers facing accessibility and price issues, corporations aren't the only ones taking financial hits; lower-level workers who are getting paid a wage by these companies are impacted without as much backing. In a study done by the U.S. Chamber of Commerce, there's an estimated minimum of $29.2 billion in lost revenue for the U.S. economy every year as a result of global online piracy.</p>
-      <p>This impact leads to workers such as animators, VFX artists, voice actors, and more in the entertainment industry being laid off or even underpaid in order for these corporations to compensate. Without consumers pouring in revenue from sources like streaming services, companies aren't able to profit as much, so they pass the financial hit down to the workers in the name of capitalism. If companies want to keep the same profits as before while generating less revenue, the solutions are cutting worker wages or even mass layoffs.</p>
+      <div class="chapter-tag" style="color:#9b59b6">Who Really Pays</div>
+      <h2>The Workers</h2>
+      <p>Although piracy exists largely as a result of consumers facing accessibility and price issues, corporations aren't the only ones taking financial hits. Lower-level workers — paid wages by these companies — are impacted without as much backing. The U.S. Chamber of Commerce estimates a minimum of $29.2 billion in lost revenue to the U.S. economy every year from global online piracy.</p>
+      <p>This leads to workers such as animators, VFX artists, voice actors, and more being laid off or underpaid so corporations can compensate. Without revenue from streaming services, companies pass the financial hit down to workers in the name of capitalism.</p>
       <blockquote>"There's a moral stance that needs to be taken when making a decision between supporting the backbone of our society or saving money for entertainment."</blockquote>
-      <p>As a consumer, this serves as a large incentive to not contribute to piracy, as my actions would directly impact people in the workforce who are trying to provide for themselves and their families. This creates a tension between having realistic, affordable ways for consumers to access entertainment, and workers being treated fairly with well-paying jobs.</p>
+      <p>This creates a tension between having affordable ways for consumers to access entertainment, and ensuring the workers who make that entertainment are treated fairly with well-paying jobs.</p>
     `
   },
   {
     num:"06", title:"Chain Reaction", tag:"Conclusion", color:"#e50914", bg:"#1a0000",
+    time:"07:55",
     content:`
-      <p>When it comes to issues such as piracy, there are winners and losers. Workers whose livelihoods depend on these corporations are losing due to being laid off and having their wages cut. Corporations behind these streaming services are not necessarily losing as they can compensate for their profit losses and continue competing with each other to drive more sales. Consumers who participate in piracy are winning as they save more money, but those who don't participate are losing as they are being essentially extorted for profit.</p>
+      <div class="chapter-tag" style="color:#e50914">Conclusion</div>
+      <h2>Chain Reaction</h2>
+      <p>When it comes to issues such as piracy, there are winners and losers. Workers whose livelihoods depend on these corporations are losing — laid off, underpaid, destabilized. Corporations aren't necessarily losing, as they can compensate for profit losses and continue competing. Consumers who pirate are saving money; those who don't are being essentially extorted for profit.</p>
       <blockquote>"When participating in piracy, you're fighting an unjust system put in place by those in power to continue staying in power; it's an act of rebellion."</blockquote>
-      <p>Even then, it's not as simple as a game of winners and losers. While people who pirate media can be blamed for the impacts on the workforce and economy, we should direct blame to the corporations who cause this piracy in the first place. When deciding to pirate a film, there are more implications than simply saving money.</p>
+      <p>While people who pirate media can be blamed for impacts on the workforce and economy, we should direct blame to the corporations who cause this piracy in the first place. When deciding to pirate a film, there are more implications than simply saving money.</p>
       <p>As I navigate the space further throughout my career, I need to be conscious of the chain reaction and butterfly effect that my sole actions can cause.</p>
     `
   }
 ];
 
-const ads = [
-  {
-    topbarColor:"#ff6600", topbarText:"#000", bodyBg:"#1a0f00", borderColor:"#ff6600",
-    eyebrow:"📊 FROM THE ESSAY",
-    headline:"$29.2 BILLION LOST EVERY YEAR",
-    text:"The U.S. Chamber of Commerce estimates a minimum of $29.2 billion in lost revenue to the U.S. economy annually from global online piracy — and the workers, not the executives, absorb most of that hit.",
-    stats:[{num:"$29.2B",label:"lost per year"},{num:"~75%",label:"consumers frustrated by rising prices"}],
-    cta:"Got It", ctaBg:"#ff6600", ctaColor:"#000",
-    footer:"Source: U.S. Chamber of Commerce · Cited in Piracy's Chain Reaction by Janie Tran",
-    sneaky:false
-  },
-  {
-    topbarColor:"#00ccff", topbarText:"#000", bodyBg:"#00101a", borderColor:"#00ccff",
-    eyebrow:"🌐 DID YOU KNOW?",
-    headline:"R/PIRACY HAS 3 MILLION USERS",
-    text:"The Reddit community r/Piracy had over three million members as of May 2026 — sharing piracy sites, cracking jokes about it, and mourning their favorite sites going dark. That's a city the size of Chicago, organized around one idea.",
-    stats:[{num:"3M+",label:"r/Piracy members"},{num:"#1",label:"reason: convenience"}],
-    cta:"Interesting", ctaBg:"#00ccff", ctaColor:"#000",
-    footer:"Source: Reddit · Accessed May 31, 2026 · Cited in the essay",
-    sneaky:false
-  },
-  {
-    topbarColor:"#ffcc00", topbarText:"#000", bodyBg:"#1a1500", borderColor:"#ffcc00",
-    eyebrow:"💸 STREAMFLATION IS REAL",
-    headline:"19.5% PRICE HIKE ON STREAMING",
-    text:"U.S. government data from the Bureau of Labor Statistics confirms streaming subscription prices rose 19.5%. Meanwhile, 40% of Americans have already cut back on subscriptions due to financial concerns.",
-    stats:[{num:"19.5%",label:"price increase"},{num:"40%",label:"Americans cutting subs"}],
-    cta:"Close", ctaBg:"#ffcc00", ctaColor:"#000",
-    footer:"Source: Hollywood Reporter / BLS · Jan 2026 · Cited in Piracy's Chain Reaction",
-    sneaky:true
-  },
-  {
-    topbarColor:"#cc00ff", topbarText:"#fff", bodyBg:"#100018", borderColor:"#cc00ff",
-    eyebrow:"📺 LICENSING CHAOS",
-    headline:"THE OFFICE LEFT NETFLIX IN 2021",
-    text:"The Office — one of the most-watched shows ever — was pulled from Netflix on January 1, 2021 and moved exclusively to Peacock. Fans who wanted to keep watching had to pay for yet another subscription.",
-    stats:[{num:"Jan 1",label:"2021 departure"},{num:"Peacock",label:"new exclusive home"}],
-    cta:"That's annoying", ctaBg:"#cc00ff", ctaColor:"#fff",
-    footer:"As cited in Piracy's Chain Reaction · Streaming rights fragmentation in action",
-    sneaky:false
-  },
-  {
-    topbarColor:"#ff3366", topbarText:"#fff", bodyBg:"#1a0010", borderColor:"#ff3366",
-    eyebrow:"⚖️ THE REAL QUESTION",
-    headline:"WHO'S ACTUALLY TO BLAME?",
-    text:"\"We should direct blame to the corporations who cause this piracy in the first place.\" Piracy is a chain reaction — started by inaccessibility, fragmentation, and greed at the top.",
-    stats:[{num:"½",label:"consumers say they overpay"},{num:"75%",label:"frustrated by rising prices"}],
-    cta:"Fair Point", ctaBg:"#ff3366", ctaColor:"#fff",
-    footer:"Quote from Piracy's Chain Reaction by Janie Tran · WCWP 100 · May 2026",
-    sneaky:false
-  }
+// Comments per chapter — mix of piracy opinions and fake "movie" reactions
+const commentSets = [
+  [ // Ch 01
+    {user:"AangFan2005", avatar:"A", color:"#4ade80", time:"2 days ago", text:"bro i waited 20 years for this movie and then it leaked and i watched it in my bed at 2am. no regrets.", likes:47, replies:3},
+    {user:"StreamingIsTired", avatar:"S", color:"#60a5fa", time:"3 days ago", text:"paying $15/month for Paramount just for one movie is crazy. I'll wait for it to hit a platform I already have.", likes:31, replies:1},
+    {user:"JusticeForAang", avatar:"J", color:"#f472b6", time:"3 days ago", text:"the animation in this film looks genuinely beautiful. whoever leaked it actually did us a favor ngl", likes:28, replies:2},
+    {user:"MoralCompass99", avatar:"M", color:"#fb923c", time:"4 days ago", text:"I get why people pirate but the VFX artists who worked on this deserve to be paid. it's complicated", likes:19, replies:4},
+    {user:"loneturtle", avatar:"L", color:"#4ade80", time:"5 days ago", text:"LEMME TELL YOU SOMETHIN. if they had just put it on a platform people already had, none of this would've happened", likes:22, replies:1},
+  ],
+  [ // Ch 02
+    {user:"r_piracy_mod", avatar:"R", color:"#4ade80", time:"1 day ago", text:"3 million users and growing every time a streaming service raises prices lol. the math is mathing", likes:88, replies:6},
+    {user:"TechBro_Dan", avatar:"T", color:"#60a5fa", time:"2 days ago", text:"piracy isn't a crime problem, it's a pricing problem. when legal options are convenient and affordable, people use them. spotify proved this", likes:64, replies:3},
+    {user:"CorpWatcher", avatar:"C", color:"#f472b6", time:"2 days ago", text:"the fact that people mourn when piracy sites go down says everything. it's a community. it's culture.", likes:41, replies:2},
+    {user:"NormieViewer", avatar:"N", color:"#fb923c", time:"3 days ago", text:"my friend casually mentioned pirating a show and i was like wait is that not what everyone does?? it's SO normalized", likes:55, replies:5},
+    {user:"EthicsProf_lol", avatar:"E", color:"#a78bfa", time:"4 days ago", text:"the camaraderie aspect is interesting from a sociological standpoint — collective action against monopolistic pricing", likes:17, replies:1},
+  ],
+  [ // Ch 03
+    {user:"OfficeRewatch", avatar:"O", color:"#4ade80", time:"5 hours ago", text:"THE OFFICE LEAVING NETFLIX WAS PERSONAL. I had to get Peacock just for that one show. that's when I understood piracy", likes:102, replies:8},
+    {user:"BleachFan_UK", avatar:"B", color:"#60a5fa", time:"1 day ago", text:"Bleach TYBW being on different platforms by country is legitimately insane. just let people watch it", likes:77, replies:4},
+    {user:"_miki__5", avatar:"M", color:"#fb923c", time:"2 days ago", text:"Don't get me wrong I love paying for content but when I need 6 subscriptions to watch one show... come on", likes:58, replies:3},
+    {user:"SouthParkStan", avatar:"S", color:"#f472b6", time:"2 days ago", text:"south park split across multiple platforms is genuinely unhinged. who approved that deal", likes:49, replies:2},
+    {user:"barboss22", avatar:"B", color:"#a78bfa", time:"3 days ago", text:"@SouthParkStan the whole point is to force you to subscribe to everything. capitalism winning as always", likes:33, replies:1},
+  ],
+  [ // Ch 04
+    {user:"WalletHurts", avatar:"W", color:"#4ade80", time:"6 hours ago", text:"19.5% price hike?? I noticed my Netflix bill going up like three times in two years. makes sense now", likes:91, replies:5},
+    {user:"DeloitteRead", avatar:"D", color:"#60a5fa", time:"1 day ago", text:"that 75% frustrated with rising prices stat is wild. that's basically everyone. and they act surprised when people pirate", likes:74, replies:4},
+    {user:"AccountSharing", avatar:"A", color:"#fb923c", time:"1 day ago", text:"netflix cracking down on account sharing was the moment I fully understood why people pirate. they just keep taking", likes:83, replies:7},
+    {user:"AdTier_Hater", avatar:"A", color:"#f472b6", time:"2 days ago", text:"ads on the cheap tier is so sneaky. you're already paying and now you have to pay MORE to not see ads?? wild", likes:66, replies:3},
+    {user:"TonyLakes", avatar:"T", color:"#a78bfa", time:"3 days ago", text:"streamflation is a real word and I hate that I know what it means now", likes:45, replies:2},
+  ],
+  [ // Ch 05
+    {user:"AnimatorHere", avatar:"A", color:"#4ade80", time:"4 hours ago", text:"as someone who works in animation, this part of the essay hits. the studios absorb piracy losses by cutting our pay first. always.", likes:134, replies:9},
+    {user:"VFX_Artist_22", avatar:"V", color:"#60a5fa", time:"12 hours ago", text:"$29.2 billion in losses and somehow it comes out of our paychecks not the CEO bonuses. every time.", likes:98, replies:6},
+    {user:"ConsciousConsumer", avatar:"C", color:"#fb923c", time:"1 day ago", text:"this is the part that genuinely makes me reconsider. I don't want to hurt the actual artists, just the executives", likes:71, replies:4},
+    {user:"MoralDilemma_irl", avatar:"M", color:"#f472b6", time:"2 days ago", text:"the tension between affordable access and fair wages is real and there's no clean answer here", likes:52, replies:3},
+    {user:"FollowTheMoney", avatar:"F", color:"#a78bfa", time:"2 days ago", text:"corporations pass the hit to workers. workers lose jobs. consumers feel guilty. corporations still profit. who's really losing here", likes:88, replies:5},
+  ],
+  [ // Ch 06
+    {user:"BigPicture_B", avatar:"B", color:"#4ade80", time:"1 hour ago", text:"\"it's an act of rebellion\" — this framing changed how I think about it. it's not just laziness, it's a response to a broken system", likes:156, replies:11},
+    {user:"WhoIsToBlame", avatar:"W", color:"#60a5fa", time:"5 hours ago", text:"exactly. we blame the pirates but the corporations built the conditions that made piracy inevitable", likes:119, replies:8},
+    {user:"ChainReaction_fan", avatar:"C", color:"#fb923c", time:"8 hours ago", text:"the butterfly effect framing is so good. every download is a tiny ripple in a much bigger system", likes:87, replies:4},
+    {user:"_miki__5", avatar:"M", color:"#fb923c", time:"1 day ago", text:"this was genuinely one of the most balanced takes on piracy I've read. most essays just say it's bad", likes:73, replies:3},
+    {user:"EthicsProf_lol", avatar:"E", color:"#a78bfa", time:"1 day ago", text:"the conclusion ties the personal and systemic together really well. solid argument structure throughout", likes:41, replies:1},
+  ]
 ];
 
-let pendingCardIndex = null, countdownInterval = null;
+const ads = [
+  {topbarColor:"#ff6600",topbarText:"#000",bodyBg:"#1a0f00",borderColor:"#ff6600",eyebrow:"📊 FROM THE ESSAY",headline:"$29.2 BILLION LOST EVERY YEAR",text:"The U.S. Chamber of Commerce estimates a minimum of $29.2 billion in lost revenue to the U.S. economy annually from global online piracy — and the workers, not the executives, absorb most of that hit.",stats:[{num:"$29.2B",label:"lost per year"},{num:"~75%",label:"frustrated by rising prices"}],cta:"Got It",ctaBg:"#ff6600",ctaColor:"#000",footer:"Source: U.S. Chamber of Commerce · Cited in Piracy's Chain Reaction",sneaky:false},
+  {topbarColor:"#00ccff",topbarText:"#000",bodyBg:"#00101a",borderColor:"#00ccff",eyebrow:"🌐 DID YOU KNOW?",headline:"R/PIRACY HAS 3 MILLION USERS",text:"The Reddit community r/Piracy had over three million members as of May 2026 — sharing piracy sites, cracking jokes, and mourning their favorite sites going dark.",stats:[{num:"3M+",label:"r/Piracy members"},{num:"#1",label:"reason: convenience"}],cta:"Interesting",ctaBg:"#00ccff",ctaColor:"#000",footer:"Source: Reddit · Accessed May 31, 2026",sneaky:false},
+  {topbarColor:"#ffcc00",topbarText:"#000",bodyBg:"#1a1500",borderColor:"#ffcc00",eyebrow:"💸 STREAMFLATION IS REAL",headline:"19.5% PRICE HIKE ON STREAMING",text:"U.S. government data confirms streaming subscription prices rose 19.5%. Meanwhile, 40% of Americans have already cut back on subscriptions due to financial concerns.",stats:[{num:"19.5%",label:"price increase"},{num:"40%",label:"Americans cutting subs"}],cta:"Close",ctaBg:"#ffcc00",ctaColor:"#000",footer:"Source: Hollywood Reporter / BLS · Jan 2026",sneaky:true},
+  {topbarColor:"#cc00ff",topbarText:"#fff",bodyBg:"#100018",borderColor:"#cc00ff",eyebrow:"📺 LICENSING CHAOS",headline:"THE OFFICE LEFT NETFLIX IN 2021",text:"The Office was pulled from Netflix on January 1, 2021 and moved exclusively to Peacock. Fans had to pay for yet another subscription.",stats:[{num:"Jan 1",label:"2021 departure"},{num:"Peacock",label:"new exclusive home"}],cta:"That's annoying",ctaBg:"#cc00ff",ctaColor:"#fff",footer:"As cited in Piracy's Chain Reaction",sneaky:false},
+  {topbarColor:"#ff3366",topbarText:"#fff",bodyBg:"#1a0010",borderColor:"#ff3366",eyebrow:"⚖️ THE REAL QUESTION",headline:"WHO'S ACTUALLY TO BLAME?",text:"\"We should direct blame to the corporations who cause this piracy in the first place.\" Piracy is a chain reaction started by inaccessibility, fragmentation, and greed.",stats:[{num:"½",label:"consumers overpay"},{num:"75%",label:"frustrated by prices"}],cta:"Fair Point",ctaBg:"#ff3366",ctaColor:"#fff",footer:"Quote from Piracy's Chain Reaction by Janie Tran",sneaky:false}
+];
+
 const palette = ['linear-gradient(135deg,#1a0000,#3d0000)','linear-gradient(135deg,#1a0d00,#3d2000)','linear-gradient(135deg,#00081a,#001040)','linear-gradient(135deg,#001a08,#003318)','linear-gradient(135deg,#0d001a,#220038)','linear-gradient(135deg,#1a0000,#2a0010)'];
 
+let pendingCardIndex = null, countdownInterval = null, currentChapter = 0;
+
+// Build home cards
 const grid = document.getElementById('card-grid');
 chapters.forEach((ch, i) => {
   const card = document.createElement('div');
@@ -273,6 +391,74 @@ function tryOpenCard(i) {
   else openCard(i);
 }
 
+function openCard(i) {
+  currentChapter = i;
+  const ch = chapters[i];
+  document.getElementById('home-page').classList.add('hidden');
+  document.getElementById('detail-page').classList.add('active');
+
+  // Fill player
+  const essay = document.getElementById('essay-content');
+  essay.innerHTML = ch.content;
+  document.getElementById('player-video').style.background = ch.bg;
+
+  // Time display
+  document.getElementById('ctrl-time').textContent = `00:01 / ${ch.time}`;
+
+  // Comments
+  const comments = commentSets[i];
+  document.getElementById('comments-title').textContent = `${comments.length * 7 + 3} comments`;
+  const cList = document.getElementById('comments-list');
+  cList.innerHTML = '';
+  comments.forEach(c => {
+    const div = document.createElement('div');
+    div.className = 'comment';
+    div.innerHTML = `
+      <div class="comment-avatar" style="background:${c.color}22;color:${c.color}">${c.avatar}</div>
+      <div class="comment-body">
+        <div class="comment-header">
+          <span class="comment-user" style="color:${c.color}">${c.user}</span>
+          <span class="comment-time">${c.time}</span>
+        </div>
+        <div class="comment-text">${c.text}</div>
+        <div class="comment-footer">
+          <span class="comment-likes">${c.likes}</span>
+          <span class="comment-reply">${c.replies} repl${c.replies===1?'y':'ies'}</span>
+        </div>
+      </div>`;
+    cList.appendChild(div);
+  });
+
+  // Sidebar — other chapters
+  const sidebar = document.getElementById('sidebar-list');
+  sidebar.innerHTML = '';
+  chapters.forEach((sc, j) => {
+    if (j === i) return;
+    const div = document.createElement('div');
+    div.className = 'sidebar-card';
+    div.onclick = () => tryOpenCard(j);
+    div.innerHTML = `
+      <div class="sidebar-thumb" style="background:${palette[j]};color:${sc.color}">
+        <span style="font-size:0.65rem;line-height:1.2;z-index:1">${sc.title}</span>
+        <span class="s-num">${sc.num}</span>
+      </div>
+      <div class="sidebar-info">
+        <div class="sidebar-name">${sc.title}</div>
+        <div class="sidebar-meta">${sc.tag}</div>
+        <div class="sidebar-meta" style="margin-top:2px">Ch. ${sc.num} · ${sc.time}</div>
+      </div>`;
+    sidebar.appendChild(div);
+  });
+
+  window.scrollTo(0,0);
+}
+
+function goHome() {
+  document.getElementById('home-page').classList.remove('hidden');
+  document.getElementById('detail-page').classList.remove('active');
+  window.scrollTo(0,0);
+}
+
 function showAd() {
   const ad = ads[Math.floor(Math.random() * ads.length)];
   const popup = document.getElementById('ad-popup');
@@ -286,45 +472,25 @@ function showAd() {
   countdown.style.color = ad.topbarText; closeBtn.style.color = ad.topbarText;
   closeBtn.style.borderColor = ad.topbarText;
   closeBtn.className = 'ad-close-btn' + (ad.sneaky ? ' sneaky' : '');
-  const statsHtml = ad.stats.map(s => `<div class="ad-stat"><div class="ad-stat-num" style="color:${ad.borderColor}">${s.num}</div><div class="ad-stat-label">${s.label}</div></div>`).join('');
+  const statsHtml = ad.stats.map(s=>`<div class="ad-stat"><div class="ad-stat-num" style="color:${ad.borderColor}">${s.num}</div><div class="ad-stat-label">${s.label}</div></div>`).join('');
   body.innerHTML = `<div class="ad-eyebrow" style="color:${ad.borderColor}">${ad.eyebrow}</div><div class="ad-headline">${ad.headline}</div><div class="ad-text">${ad.text}</div><div class="ad-stat-row">${statsHtml}</div><button class="ad-cta" style="background:${ad.ctaBg};color:${ad.ctaColor}" onclick="closeAd()">${ad.cta}</button>`;
   footer.textContent = ad.footer;
   let secs = 3;
   countdown.textContent = `Skip in ${secs}s`;
-  closeBtn.style.pointerEvents = 'none'; closeBtn.style.opacity = '0.35';
+  closeBtn.style.pointerEvents='none'; closeBtn.style.opacity='0.35';
   clearInterval(countdownInterval);
-  countdownInterval = setInterval(() => {
+  countdownInterval = setInterval(()=>{
     secs--;
-    if (secs <= 0) { clearInterval(countdownInterval); countdown.textContent = ''; closeBtn.style.pointerEvents = 'auto'; closeBtn.style.opacity = '1'; }
-    else countdown.textContent = `Skip in ${secs}s`;
-  }, 1000);
+    if(secs<=0){clearInterval(countdownInterval);countdown.textContent='';closeBtn.style.pointerEvents='auto';closeBtn.style.opacity='1';}
+    else countdown.textContent=`Skip in ${secs}s`;
+  },1000);
   document.getElementById('ad-overlay').classList.add('show');
 }
 
 function closeAd() {
   clearInterval(countdownInterval);
   document.getElementById('ad-overlay').classList.remove('show');
-  if (pendingCardIndex !== null) { const idx = pendingCardIndex; pendingCardIndex = null; openCard(idx); }
-}
-
-function openCard(i) {
-  const ch = chapters[i];
-  document.getElementById('home-page').classList.add('hidden');
-  document.getElementById('detail-page').classList.add('active');
-  document.getElementById('detail-tag').textContent = ch.tag;
-  document.getElementById('detail-tag').style.background = ch.color;
-  document.getElementById('detail-tag').style.color = '#000';
-  document.getElementById('detail-title').textContent = ch.title;
-  document.getElementById('detail-hero').style.background = ch.bg;
-  document.getElementById('detail-body').innerHTML = ch.content;
-  document.querySelectorAll('#detail-body blockquote').forEach(bq => bq.style.borderColor = ch.color);
-  window.scrollTo(0,0);
-}
-
-function goHome() {
-  document.getElementById('home-page').classList.remove('hidden');
-  document.getElementById('detail-page').classList.remove('active');
-  window.scrollTo(0,0);
+  if(pendingCardIndex!==null){const idx=pendingCardIndex;pendingCardIndex=null;openCard(idx);}
 }
 </script>
 </body>
