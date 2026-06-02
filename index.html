@@ -471,10 +471,15 @@ function openCard(i) {
     const div = document.createElement('div');
     div.className = 'sidebar-card';
     div.onclick = () => tryOpenCard(j);
+    const sThumbBg = sc.img
+      ? `background-image:url('${sc.img}');background-size:cover;background-position:center;`
+      : `background:${palette[j]};`;
     div.innerHTML = `
-      <div class="sidebar-thumb" style="background:${palette[j]};color:${sc.color}">
-        <span style="font-size:0.65rem;line-height:1.2;z-index:1">${sc.title}</span>
-        <span class="s-num">${sc.num}</span>
+      <div class="sidebar-thumb" style="${sThumbBg};position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;background:${sc.color};opacity:0.75;"></div>
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);"></div>
+        <span style="position:relative;font-size:0.62rem;line-height:1.2;z-index:1;color:#fff;font-family:'Bebas Neue',sans-serif;letter-spacing:0.05em;text-align:center;text-shadow:0 1px 4px rgba(0,0,0,1)">${sc.title}</span>
+        <span class="s-num" style="color:#fff;opacity:0.12">${sc.num}</span>
       </div>
       <div class="sidebar-info">
         <div class="sidebar-name">${sc.title}</div>
