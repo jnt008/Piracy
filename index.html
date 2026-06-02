@@ -395,10 +395,11 @@ chapters.forEach((ch, i) => {
   card.innerHTML = `
     <div class="card-thumb">
       <div class="card-thumb-inner" style="${thumbBg}">
-        <div style="position:absolute;inset:0;background:${ch.color};opacity:0.55;mix-blend-mode:multiply;border-radius:3px;"></div>
-        <span style="position:relative;font-size:0.65rem;font-family:'Space Mono',monospace;letter-spacing:0.15em;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.9)">${ch.tag.toUpperCase()}</span>
-        <span style="position:relative;font-size:1rem;text-align:center;line-height:1.2;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,0.9);font-family:'Bebas Neue',sans-serif">${ch.title}</span>
-        <span class="num" style="color:#fff;opacity:0.15">${ch.num}</span>
+        <div style="position:absolute;inset:0;background:${ch.color};opacity:0.75;border-radius:3px;"></div>
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.55);border-radius:3px;"></div>
+        <span style="position:relative;font-size:0.65rem;font-family:'Space Mono',monospace;letter-spacing:0.18em;color:#fff;opacity:0.9;text-shadow:0 1px 6px rgba(0,0,0,1)">${ch.tag.toUpperCase()}</span>
+        <span style="position:relative;font-size:1.05rem;text-align:center;line-height:1.2;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,1);font-family:'Bebas Neue',sans-serif;letter-spacing:0.05em">${ch.title}</span>
+        <span class="num" style="color:#fff;opacity:0.1">${ch.num}</span>
       </div>
       <div class="card-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="#111"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
